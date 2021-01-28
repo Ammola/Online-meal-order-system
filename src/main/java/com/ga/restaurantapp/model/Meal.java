@@ -1,10 +1,7 @@
 package com.ga.restaurantapp.model;
-
 import java.time.LocalDateTime;
 import java.util.Set;
-
 import javax.persistence.*;
-
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -21,7 +18,7 @@ public class Meal {
 	private int MealPrice;
 	
 	@ManyToMany(mappedBy="meals")
-	private Set<Order> orders;
+//	private Set<Order> orders;
 	@Column(name="createdAt", nullable = false, updatable = false)
 	@CreationTimestamp
 	private LocalDateTime createAt;
@@ -58,13 +55,13 @@ public class Meal {
 		MealPrice = mealPrice;
 	}
 
-	public Set<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(Set<Order> orders) {
-		this.orders = orders;
-	}
+//	public Set<Order> getOrders() {
+//		return orders;
+//	}
+//
+//	public void setOrders(Set<Order> orders) {
+//		this.orders = orders;
+//	}
 	
 
 }
