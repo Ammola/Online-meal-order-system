@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.ga.blogapp.model.Author;
 
 @Entity
 @Table(name="Meal")
@@ -25,7 +24,5 @@ public class Meal {
 	@ManyToMany(mappedBy="OrderMeals")
 	private Set<Order> orders;
 
-	
-	
-
 }
+	
