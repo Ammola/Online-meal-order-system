@@ -11,7 +11,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name="Order")
+@Table(name="orders")
 public class Order {
 	
 	@Id
@@ -25,7 +25,7 @@ public class Order {
 	private int price;
 	
 	@ManyToMany
-	@JoinTable(name = "meal_order",
+	@JoinTable(name = "meals_orders",
 				joinColumns = { @JoinColumn(name = "order_id") },
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
 	private Set<Meal> meals;

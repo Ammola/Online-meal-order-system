@@ -8,14 +8,14 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 
 @Entity
-@Table(name="meal")
+@Table(name="meals")
 public class Meal {
 	
 	@Id
 	@GeneratedValue
 	private int mealId;
-	private String mealName;
 	@Column(length = 50)
+	private String mealName;
 	private int mealPrice;
 	
 	@ManyToMany(mappedBy="meals")
