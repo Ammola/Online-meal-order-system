@@ -1,6 +1,7 @@
 package com.ga.restaurantapp.model;
 
 import java.sql.Date;
+
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -9,16 +10,15 @@ import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-
 @Entity
-@Table(name="Oerder")
+@Table(name="Order")
 public class Order {
 	
 	@Id
 	@GeneratedValue
-	private int OrderId;
+	private int orderId;
 	
-	private Date OrderDate;
+	private Date orderDate;
 	
 	private int quantity;
 	
@@ -38,5 +38,61 @@ public class Order {
 	@UpdateTimestamp
 	private LocalDateTime updateAt;
 
+	public int getOrderId() {
+		return orderId;
+	}
 
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+
+	public Date getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public Set<Meal> getMeals() {
+		return meals;
+	}
+
+	public void setMeals(Set<Meal> meals) {
+		this.meals = meals;
+	}
+
+	public LocalDateTime getCreateAt() {
+		return createAt;
+	}
+
+	public void setCreateAt(LocalDateTime createAt) {
+		this.createAt = createAt;
+	}
+
+	public LocalDateTime getUpdateAt() {
+		return updateAt;
+	}
+
+	public void setUpdateAt(LocalDateTime updateAt) {
+		this.updateAt = updateAt;
+	}
+
+	
 }
