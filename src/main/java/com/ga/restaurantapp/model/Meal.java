@@ -1,7 +1,5 @@
 package com.ga.restaurantapp.model;
-
 import java.util.Set;
-
 import javax.persistence.*;
 
 
@@ -16,8 +14,5 @@ public class Meal {
 	@Column(length = 50)
 	private int MealPrice;
 	
-	//@ManyToMany(mappedBy="Order")
-	//private Set<Order> orders;
-
 }
 	
