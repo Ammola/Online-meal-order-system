@@ -76,8 +76,5 @@ public class Meal {
 	public void setUpdateAt(LocalDateTime updateAt) {
 		this.updateAt = updateAt;
 	}
-	
-	
-
 }
 	
