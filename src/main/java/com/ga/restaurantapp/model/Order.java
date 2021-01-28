@@ -3,12 +3,8 @@ package com.ga.restaurantapp.model;
 import java.sql.Date;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 
 @Entity
 @Table(name="Order")
@@ -30,10 +26,11 @@ public class Order {
 	@JoinTable(name = "meal_order",
 				joinColumns = { @JoinColumn(name = "order_id") },
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
+
+	
+	
 	private Set<Meal> meal;
-	
-	
-	
+
 	
 	
 	
