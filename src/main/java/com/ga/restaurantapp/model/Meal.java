@@ -17,14 +17,14 @@ public class Meal {
 	@Column(length = 50)
 	private int MealPrice;
 	
-	@ManyToMany(mappedBy="meals")
+//	@ManyToMany(mappedBy="meals")
 //	private Set<Order> orders;
-	@Column(name="createdAt", nullable = false, updatable = false)
-	@CreationTimestamp
-	private LocalDateTime createAt;
-	@Column(name="updatedat", nullable = false, updatable = true)
-	@UpdateTimestamp
-	private LocalDateTime updateAt;
+//	@Column(name="createdAt", nullable = false, updatable = false)
+//	@CreationTimestamp
+//	private LocalDateTime createAt;
+//	@Column(name="updatedat", nullable = false, updatable = true)
+//	@UpdateTimestamp
+//	private LocalDateTime updateAt;
 //	@ManyToMany
 //	@JoinTable(name = "OrderMeals", joinColumns = { @JoinColumn(name = "MealId")}
 //	, inverseJoinColumns = { @JoinColumn(name ="OrderId")})
