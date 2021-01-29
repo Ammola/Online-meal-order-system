@@ -12,6 +12,7 @@
 </head>
 <body>
 <h2>${Welcome}</h2>
+
 <% if(session.getAttribute("user") != null){%>
 
 <a href="${appName}">Home</a> |

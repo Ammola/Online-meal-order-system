@@ -1,12 +1,8 @@
 package com.ga.restaurantapp.model;
-
 import java.sql.Date;
-
 import java.time.LocalDateTime;
 import java.util.Set;
-
 import javax.persistence.*;
-
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -32,6 +28,7 @@ public class Order {
 	@JoinTable(name = "meals_orders",
 				joinColumns = { @JoinColumn(name = "order_id") },
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
+
 	private Set<Meal> meals;
 	
 	@Column(name="createdAt", nullable = false, updatable = false)

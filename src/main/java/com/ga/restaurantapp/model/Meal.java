@@ -2,13 +2,13 @@ package com.ga.restaurantapp.model;
 import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.*;
-
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 
 @Entity
 @Table(name="meals")
+
 public class Meal {
 	
 	@Id
