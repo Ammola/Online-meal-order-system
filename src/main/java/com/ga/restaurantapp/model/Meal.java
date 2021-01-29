@@ -7,12 +7,28 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 
 @Entity
+
+@Table(name="Meal")
+
 @Table(name="meals")
 
 public class Meal {
 	
 	@Id
 	@GeneratedValue
+
+	private int MealId;
+	private String MealName;
+	@Column(length = 50)
+	private int MealPrice;
+	private int Calories;
+	private String Description;
+	
+	@ManyToMany(mappedBy="meals")
+	private Set<Order> orders;
+	@Column(name="createdAt", nullable = false, updatable = false)
+	@CreationTimestamp
+	private LocalDateTime createAt;
 	private int mealId;
 	
 	@Column(length = 50)
@@ -31,11 +47,35 @@ public class Meal {
 	@CreationTimestamp
 	private LocalDateTime createAt;
 	
+
 	@Column(name="updatedat", nullable = false, updatable = true)
 	@UpdateTimestamp
 	private LocalDateTime updateAt;
 
 	public int getMealId() {
+
+		return MealId;
+	}
+
+	public void setMealId(int mealId) {
+		MealId = mealId;
+	}
+
+	public String getMealName() {
+		return MealName;
+	}
+
+	public void setMealName(String mealName) {
+		MealName = mealName;
+	}
+
+	public int getMealPrice() {
+		return MealPrice;
+	}
+
+	public void setMealPrice(int mealPrice) {
+		MealPrice = mealPrice;
+
 		return mealId;
 	}
 
@@ -57,6 +97,7 @@ public class Meal {
 
 	public void setMealPrice(int mealPrice) {
 		this.mealPrice = mealPrice;
+
 	}
 
 	public Set<Order> getOrders() {
@@ -67,6 +108,23 @@ public class Meal {
 		this.orders = orders;
 	}
 
+<
+	public int getCalories() {
+		return Calories;
+	}
+
+	public void setCalories(int calories) {
+		Calories = calories;
+	}
+
+	public String getDescription() {
+		return Description;
+	}
+
+	public void setDescription(String description) {
+		Description = description;
+	}
+	
 	public LocalDateTime getCreateAt() {
 		return createAt;
 	}
@@ -78,6 +136,7 @@ public class Meal {
 	public LocalDateTime getUpdateAt() {
 		return updateAt;
 	}
+
 
 	public void setUpdateAt(LocalDateTime updateAt) {
 		this.updateAt = updateAt;

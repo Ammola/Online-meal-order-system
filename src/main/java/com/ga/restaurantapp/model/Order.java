@@ -1,5 +1,11 @@
 package com.ga.restaurantapp.model;
 import java.sql.Date;
+
+
+import java.util.Set;
+
+import javax.persistence.*;
+
 import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.*;
@@ -28,6 +34,10 @@ public class Order {
 	@JoinTable(name = "meals_orders",
 				joinColumns = { @JoinColumn(name = "order_id") },
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
+
+	private Set<Meal> meals;
+	public int getOrderid() {
+		return Orderid;
 
 	private Set<Meal> meals;
 	
@@ -71,6 +81,13 @@ public class Order {
 		this.price = price;
 	}
 
+	public Set<Meal> getMeal() {
+		return meals;
+	}
+
+	public void setMeal(Set<Meal> meal) {
+		this.meals = meal;
+
 	public Set<Meal> getMeals() {
 		return meals;
 	}
@@ -93,6 +110,7 @@ public class Order {
 
 	public void setUpdateAt(LocalDateTime updateAt) {
 		this.updateAt = updateAt;
+
 	}
 
 	
