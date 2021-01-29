@@ -24,6 +24,10 @@ public class Order {
 	
 	private int price;
 	
+	@ManyToOne
+	@JoinColumn(name="FK_CustomerId")
+	private User customerId;
+	
 	@ManyToMany
 	@JoinTable(name = "meals_orders",
 				joinColumns = { @JoinColumn(name = "order_id") },

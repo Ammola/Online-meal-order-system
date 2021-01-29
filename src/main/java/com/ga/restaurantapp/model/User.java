@@ -1,6 +1,7 @@
 package com.ga.restaurantapp.model;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -19,6 +20,12 @@ public class User {
 		private String emailAddress;
 		private String password;
 		private String userRole;
+		
+		@OneToMany(mappedBy="admin")
+		private Set<Meal> meals;
+
+		@OneToMany(mappedBy="customerId")
+		private Set<Order> orders;
 		
 		@Column(name="createdAt", nullable = false, updatable = false)
 		@CreationTimestamp
@@ -92,4 +99,19 @@ public class User {
 			this.userRole = userRole;
 		}
 		
+		public Set<Meal> getMeals() {
+			return meals;
+		}
+
+		public void setMeals(Set<Meal> meals) {
+			this.meals = meals;
+		}
+
+		public Set<Order> getOrders() {
+			return orders;
+		}
+
+		public void setOrders(Set<Order> orders) {
+			this.orders = orders;
+		}
 	}

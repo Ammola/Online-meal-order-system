@@ -12,13 +12,34 @@
 </head>
 <body>
 <h2>${Welcome}</h2>
-<%-- ${pageContext["request"].userPrinciple.principal}
- --%>
+<% if(session.getAttribute("user") != null){%>
+
+<a href="${appName}">Home</a> |
+<a href="${appName}meal/index">Meals</a> |
+<% if(session.getAttribute("userRole").equals("admin")) { %>
+<a href="${appName}meal/add">Add Meal</a> |
+<% } %>
+<a href="${appName}order/add">Add Order</a> |
+<a href="${appName}order/index">Orders</a> 
 
 <div style="text-align:right; float:right;">
-<a href="${appName}user/login">Login</a>
+<b>Hi: ${user.getFirstName()} ${user.getLastName()}</b>
+<a href="${appName}user/cart">Cart</a> |
+<a href="${appName}user/logout">Logout</a> |
+<a href="${appName}user/profile">Profile</a>
+</div>
+
+<%} else {%>
+
+<a href="${appName}">Home</a> |
+<a href="${appName}meal/index">Meals</a>
+
+<div style="text-align:right; float:right;">
+<a href="${appName}user/login">Login</a> |
 <a href="${appName}user/registration">Create New Account</a>
 </div>
+
+<% } %>
 
 </body>
 </html>

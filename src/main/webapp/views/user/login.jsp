@@ -3,11 +3,11 @@
 <b>${message}</b>
 <br>
 
-<form action="${appName}login" method="post">
+<form action="${appName}user/login" method="post">
 
 	<div class="form-group">
 	<label> Email Address </label>
-	<input name="username" type="email" class="form-control">
+	<input name="emailAddress" type="email" class="form-control">
 	</div>
 	
 	<div class="form-group">
@@ -16,7 +16,6 @@
 	</div>
 	
 	<br>
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	<button type="submit" class="btn btn-primary">Submit</button>
 
 </form>

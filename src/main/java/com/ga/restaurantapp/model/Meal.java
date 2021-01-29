@@ -14,9 +14,15 @@ public class Meal {
 	@Id
 	@GeneratedValue
 	private int mealId;
+	
 	@Column(length = 50)
 	private String mealName;
 	private int mealPrice;
+	
+	@ManyToOne
+	@JoinColumn(name="FK_AdmiId")
+	private User admin;
+	
 	
 	@ManyToMany(mappedBy="meals")
 	private Set<Order> orders;
