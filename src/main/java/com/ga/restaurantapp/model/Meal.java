@@ -16,20 +16,17 @@ public class Meal {
 	private String MealName;
 	@Column(length = 50)
 	private int MealPrice;
+	private int Calories;
+	private String Description;
 	
-//	@ManyToMany(mappedBy="meals")
-//	private Set<Order> orders;
-//	@Column(name="createdAt", nullable = false, updatable = false)
-//	@CreationTimestamp
-//	private LocalDateTime createAt;
-//	@Column(name="updatedat", nullable = false, updatable = true)
-//	@UpdateTimestamp
-//	private LocalDateTime updateAt;
-//	@ManyToMany
-//	@JoinTable(name = "OrderMeals", joinColumns = { @JoinColumn(name = "MealId")}
-//	, inverseJoinColumns = { @JoinColumn(name ="OrderId")})
-	
-//	private Set<Order> orders;
+	@ManyToMany(mappedBy="meals")
+	private Set<Order> orders;
+	@Column(name="createdAt", nullable = false, updatable = false)
+	@CreationTimestamp
+	private LocalDateTime createAt;
+	@Column(name="updatedat", nullable = false, updatable = true)
+	@UpdateTimestamp
+	private LocalDateTime updateAt;
 
 	public int getMealId() {
 		return MealId;
@@ -55,13 +52,29 @@ public class Meal {
 		MealPrice = mealPrice;
 	}
 
-//	public Set<Order> getOrders() {
-//		return orders;
-//	}
-//
-//	public void setOrders(Set<Order> orders) {
-//		this.orders = orders;
-//	}
+	public Set<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
+	}
+
+	public int getCalories() {
+		return Calories;
+	}
+
+	public void setCalories(int calories) {
+		Calories = calories;
+	}
+
+	public String getDescription() {
+		return Description;
+	}
+
+	public void setDescription(String description) {
+		Description = description;
+	}
 	
 
 }

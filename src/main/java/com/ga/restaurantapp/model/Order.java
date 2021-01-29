@@ -26,13 +26,7 @@ public class Order {
 	@JoinTable(name = "meal_order",
 				joinColumns = { @JoinColumn(name = "order_id") },
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
-	private Set<Meal> meal;
-	
-	
-	
-	
-	
-	
+	private Set<Meal> meals;
 	public int getOrderid() {
 		return Orderid;
 	}
@@ -66,11 +60,11 @@ public class Order {
 	}
 
 	public Set<Meal> getMeal() {
-		return meal;
+		return meals;
 	}
 
 	public void setMeal(Set<Meal> meal) {
-		this.meal = meal;
+		this.meals = meal;
 	}
 
 	
