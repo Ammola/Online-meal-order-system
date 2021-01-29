@@ -20,6 +20,7 @@ public class User {
 		private String emailAddress;
 		private String password;
 		private String userRole;
+		private String address;
 		
 		@OneToMany(mappedBy="admin")
 		private Set<Meal> meals;
@@ -113,5 +114,13 @@ public class User {
 
 		public void setOrders(Set<Order> orders) {
 			this.orders = orders;
+		}
+		
+		public String getAddress() {
+			return address;
+		}
+
+		public void setAddress(String address) {
+			this.address = address;
 		}
 	}
