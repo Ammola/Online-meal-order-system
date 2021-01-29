@@ -1,80 +1,99 @@
 package com.ga.restaurantapp.model;
-
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.Set;
-
 import javax.persistence.*;
-
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name="Orders")
+@Table(name="orders")
 public class Order {
-
+	
 	@Id
 	@GeneratedValue
-	private int Orderid;
-
-	private Date OrderDate;
+	private int orderId;
 	
-	private int Quantity;
+	private Date orderDate;
 	
-	private int CustomerID;
+	private int quantity;
 	
+	private int price;
 	
-
+	@ManyToOne
+	@JoinColumn(name="FK_CustomerId")
+	private User customerId;
+	
 	@ManyToMany
-	@JoinTable(name = "meal_order",
+	@JoinTable(name = "meals_orders",
 				joinColumns = { @JoinColumn(name = "order_id") },
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
 
+	private Set<Meal> meals;
 	
+	@Column(name="createdAt", nullable = false, updatable = false)
+	@CreationTimestamp
+	private LocalDateTime createAt;
 	
-	private Set<Meal> meal;
+	@Column(name="updatedat", nullable = false, updatable = true)
+	@UpdateTimestamp
+	private LocalDateTime updateAt;
 
-	
-	
-	// getter and setter
-	public int getOrderid() {
-		return Orderid;
+	public int getOrderId() {
+		return orderId;
 	}
 
-	public void setOrderid(int orderid) {
-		Orderid = orderid;
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 
 	public Date getOrderDate() {
-		return OrderDate;
+		return orderDate;
 	}
 
 	public void setOrderDate(Date orderDate) {
-		OrderDate = orderDate;
+		this.orderDate = orderDate;
 	}
 
 	public int getQuantity() {
-		return Quantity;
+		return quantity;
 	}
 
 	public void setQuantity(int quantity) {
-		Quantity = quantity;
+		this.quantity = quantity;
 	}
 
-	public int getCustomerID() {
-		return CustomerID;
+	public int getPrice() {
+		return price;
 	}
 
-	public void setCustomerID(int customerID) {
-		CustomerID = customerID;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
-	public Set<Meal> getMeal() {
-		return meal;
+	public Set<Meal> getMeals() {
+		return meals;
 	}
 
-	public void setMeal(Set<Meal> meal) {
-		this.meal = meal;
+	public void setMeals(Set<Meal> meals) {
+		this.meals = meals;
 	}
 
-	
-	
+	public LocalDateTime getCreateAt() {
+		return createAt;
+	}
+
+	public void setCreateAt(LocalDateTime createAt) {
+		this.createAt = createAt;
+	}
+
+	public LocalDateTime getUpdateAt() {
+		return updateAt;
+	}
+
+	public void setUpdateAt(LocalDateTime updateAt) {
+		this.updateAt = updateAt;
+	}
+
 	
 }
