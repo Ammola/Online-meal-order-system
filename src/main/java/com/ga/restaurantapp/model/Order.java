@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="Order")
+@Table(name="Orders")
 public class Order {
 
 	@Id
@@ -33,7 +33,7 @@ public class Order {
 
 	
 	
-	
+	// getter and setter
 	public int getOrderid() {
 		return Orderid;
 	}
