@@ -9,11 +9,9 @@
 <body>
 <h2>${Welcome}</h2>
 
-<!-- may add this or deleted -->
 <a href="/">Add Meal</a>
 <a href="/">Meal</a>
 <hr>
-<!--  -->
 
 
 </body>
