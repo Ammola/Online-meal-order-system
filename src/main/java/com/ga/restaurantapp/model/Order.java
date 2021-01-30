@@ -1,19 +1,8 @@
 package com.ga.restaurantapp.model;
 import java.sql.Date;
-<<<<<<< HEAD
-//ADD LOCALDATE
-import java.time.LocalDateTime;
-=======
-
-
->>>>>>> master
-import java.util.Set;
-
-import javax.persistence.*;
-
-import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -23,113 +12,70 @@ public class Order {
 	
 	@Id
 	@GeneratedValue
-	private int orderId;
+	private int Orderid ,Quantity ,Price;
 	
-	private Date orderDate;
-	
-<<<<<<< HEAD
-	private int price;
-	
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
-	public LocalDateTime getCreateAt() {
-		return createAt;
-	}
-
-	public void setCreateAt(LocalDateTime createAt) {
-		this.createAt = createAt;
-	}
-
-	public LocalDateTime getUpdateAt() {
-		return updateAt;
-	}
-
-	public void setUpdateAt(LocalDateTime updateAt) {
-		this.updateAt = updateAt;
-	}
-
-	private int CustomerID;
-	
-	@Column(name="createdAt", nullable = false, updatable = false)
-	private LocalDateTime createAt;
-	
-	@Column(name="updatedat", nullable = false, updatable = true)
-	private LocalDateTime updateAt;
-
-=======
-	private int quantity;
-	
-	private int price;
+	private Date OrderDate;
 	
 	@ManyToOne
 	@JoinColumn(name="FK_CustomerId")
 	private User customerId;
->>>>>>> master
+
 	
 	@ManyToMany
-	@JoinTable(name = "meals_orders",
+	@JoinTable(name = "meal_order",
 				joinColumns = { @JoinColumn(name = "order_id") },
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
 
 	private Set<Meal> meals;
 	public int getOrderid() {
 		return Orderid;
-
-	private Set<Meal> meals;
+	}
+	
 	
 	@Column(name="createdAt", nullable = false, updatable = false)
 	@CreationTimestamp
 	private LocalDateTime createAt;
-	
+
 	@Column(name="updatedat", nullable = false, updatable = true)
 	@UpdateTimestamp
 	private LocalDateTime updateAt;
 
 	public int getOrderId() {
-		return orderId;
+		return Orderid;
 	}
 
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
+	public void setOrderid(int orderid) {
+		Orderid = orderid;
 	}
-
+	
 	public Date getOrderDate() {
-		return orderDate;
+		return OrderDate;
 	}
 
 	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
+		this.OrderDate = orderDate;
 	}
 
 	public int getQuantity() {
-		return quantity;
+		return Quantity;
 	}
 
 	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+		this.Quantity = quantity;
 	}
 
 	public int getPrice() {
-		return price;
+		return Price;
 	}
 
 	public void setPrice(int price) {
-		this.price = price;
+		this.Price = price;
 	}
 
 	public Set<Meal> getMeal() {
 		return meals;
 	}
-
-	public void setMeal(Set<Meal> meal) {
-		this.meals = meal;
-
+	
 	public Set<Meal> getMeals() {
 		return meals;
 	}
