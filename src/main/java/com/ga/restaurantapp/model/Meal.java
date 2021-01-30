@@ -1,31 +1,71 @@
 package com.ga.restaurantapp.model;
-
+import java.time.LocalDateTime;
 import java.util.Set;
-
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-
-
-
+import javax.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 @Entity
-@Table(name="Meal")
-
+@Table(name="Meals")
 public class Meal {
 	
-//	@Id
-//	@GeneratedValue
-//	private int MealId;
-//	private String MealName;
-//	@Column(length = 50)
-//	private int MealPrice;
-//	
-//	@ManyToMany(mappedBy="OrderMeals")
-//	private Set<Order> orders;
+	@Id
+	@GeneratedValue
+	private int MealId;
+	private String MealName;
+	@Column(length = 50)
+	private int MealPrice;
+	private int Calories;
+	private String Description;
+	
+	@ManyToOne
+	@JoinColumn(name="FK_AdmiId")
+	private User admin;
 
+	
+	@ManyToMany(mappedBy="meals")
+	private Set<Order> orders;
+	@Column(name="createdAt", nullable = false, updatable = false)
+	@CreationTimestamp
+	private LocalDateTime createAt;
+	@Column(name="updatedat", nullable = false, updatable = true)
+	@UpdateTimestamp
+	private LocalDateTime updateAt;
+	public int getMealId() {
+		return MealId;
+	}
+	public void setMealId(int mealId) {
+		MealId = mealId;
+	}
+	public String getMealName() {
+		return MealName;
+	}
+	public void setMealName(String mealName) {
+		MealName = mealName;
+	}
+	public int getMealPrice() {
+		return MealPrice;
+	}
+	public void setMealPrice(int mealPrice) {
+		MealPrice = mealPrice;
+	}
+	public Set<Order> getOrders() {
+		return orders;
+	}
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
+	}
+	public int getCalories() {
+		return Calories;
+	}
+	public void setCalories(int calories) {
+		Calories = calories;
+	}
+	public String getDescription() {
+		return Description;
+	}
+	public void setDescription(String description) {
+		Description = description;
+	}
+	
 }
 	
