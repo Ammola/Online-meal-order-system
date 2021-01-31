@@ -48,7 +48,16 @@ public class OrderController {
 		dao.save(order);
 		return "redirect:/order/index";
 		
-		
 	}
 	
+	@GetMapping("/order/index")
+	public ModelAndView getAuthor() {
+		var it = dao.findAll();
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("order/index");
+		mv.addObject("orders", it);
+		HomeController hc = new HomeController();
+		hc.setAppName(mv, env);
+		return mv;
+	}
 }

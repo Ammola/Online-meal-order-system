@@ -3,6 +3,9 @@
 
 <form action="/restaurant/order/add" method="post">
 	<div>
+		<label>customerId</label> <input type="text" name="customerId">
+	</div>
+	<div>
 		<label>Order ID </label> <input type="text" name="Orderid">
 	</div>
 	<div>
@@ -14,10 +17,8 @@
 	<div>
 		<label>OrderDate</label> <input type="date" name="OrderDate">
 	</div>
-	<div>
-		<label>customerId</label> <input type="text" name="customerId">
-	</div>
 	
-	<button type="submit">Submit your Order</button>
+	
+	<button type="submit">checkout</button>
 	
 </form>

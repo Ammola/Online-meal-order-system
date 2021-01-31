@@ -13,16 +13,16 @@
 <body>
 <h2>${Welcome}</h2>
 
-<<<<<<< HEAD
-<a href="/">Add Meal</a>
-<a href="/">Meal</a>
-<hr>
-=======
 <% if(session.getAttribute("user") != null){%>
->>>>>>> master
 
 <a href="${appName}">Home</a> |
 <a href="${appName}meal/index">Meals</a> |
+
+<a href="${appName}">Home</a> |
+<a href="${appName}order/cart">orders</a> |
+
+
+
 <% if(session.getAttribute("userRole").equals("admin")) { %>
 <a href="${appName}meal/add">Add Meal</a> |
 <% } %>
