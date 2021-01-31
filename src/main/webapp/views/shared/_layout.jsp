@@ -17,6 +17,12 @@
 
 <a href="${appName}">Home</a> |
 <a href="${appName}meal/index">Meals</a> |
+
+<a href="${appName}">Home</a> |
+<a href="${appName}order/cart">orders</a> |
+
+
+
 <% if(session.getAttribute("userRole").equals("admin")) { %>
 <a href="${appName}meal/add">Add Meal</a> |
 <% } %>

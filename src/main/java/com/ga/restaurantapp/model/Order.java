@@ -2,25 +2,58 @@ package com.ga.restaurantapp.model;
 import java.sql.Date;
 import java.util.Set;
 import javax.persistence.*;
+
+import java.time.LocalDateTime;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 @Entity
 @Table(name="Orders")
 public class Order {
 	@Id
 	@GeneratedValue
+
+	@Column(length = 3)
 	private int Orderid;
+	
+	private int Quantity ,Price;
+	
 	private Date OrderDate;
 	
-	private int Quantity;
-	
-	private int CustomerID;
-	
-	
+	private String CustomerName;
+	@Column(length = 10)
+	private int CustomerPhone;
+
 	@ManyToOne
 	@JoinColumn(name="FK_CustomerId")
 	private User customerId;
 
+
 	
-	
+	public String getCustomerName() {
+		return CustomerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		CustomerName = customerName;
+	}
+
+	public int getCustomerPhone() {
+		return CustomerPhone;
+	}
+
+	public void setCustomerPhone(int customerPhone) {
+		this.CustomerPhone = customerPhone;
+	}
+
+	public User getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(User customerId) {
+		this.customerId = customerId;
+	}
+
+
 	@ManyToMany
 	@JoinTable(name = "meal_order",
 				joinColumns = { @JoinColumn(name = "order_id") },
@@ -28,36 +61,53 @@ public class Order {
 	private Set<Meal> meals;
 	public int getOrderid() {
 		return Orderid;
+
 	}
+	
+	
+	@Column(name="createdAt", nullable = false, updatable = false)
+	@CreationTimestamp
+	private LocalDateTime createAt;
+
+	@Column(name="updatedat", nullable = false, updatable = true)
+	@UpdateTimestamp
+	private LocalDateTime updateAt;
+
+	public int getOrderId() {
+		return Orderid;
+	}
+
 	public void setOrderid(int orderid) {
 		Orderid = orderid;
 	}
+	
+
 	public Date getOrderDate() {
 		return OrderDate;
 	}
 	public void setOrderDate(Date orderDate) {
-		OrderDate = orderDate;
+
+		this.OrderDate = orderDate;
 	}
 	public int getQuantity() {
 		return Quantity;
 	}
 	public void setQuantity(int quantity) {
-		Quantity = quantity;
+
+		this.Quantity = quantity;
 	}
-	public int getCustomerID() {
-		return CustomerID;
+
+	public int getPrice() {
+		return Price;
 	}
-	public void setCustomerID(int customerID) {
-		CustomerID = customerID;
+
+	public void setPrice(int price) {
+		this.Price = price;
+
 	}
 	public Set<Meal> getMeal() {
 		return meals;
 	}
-	public void setMeal(Set<Meal> meal) {
-		this.meals = meal;
-	}
-	
-	
 	
 }
 
