@@ -1,7 +1,7 @@
 <jsp:include page="../shared/_layout.jsp" />
 
 
-<form action="/blogapp/author/add" method="post">
+<form action="/restaurant/order/add" method="post">
 	<div>
 		<label>Order ID </label> <input type="text" name="Orderid">
 	</div>
