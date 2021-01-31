@@ -12,15 +12,46 @@ public class Order {
 	
 	@Id
 	@GeneratedValue
-	private int Orderid ,Quantity ,Price;
+	private int Orderid;
+	
+	private int Quantity ,Price;
 	
 	private Date OrderDate;
+	
+	private String CustomerName;
+	
+	private int CustomerPhone;
 	
 	@ManyToOne
 	@JoinColumn(name="FK_CustomerId")
 	private User customerId;
 
 	
+	public String getCustomerName() {
+		return CustomerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		CustomerName = customerName;
+	}
+
+	public int getCustomerPhone() {
+		return CustomerPhone;
+	}
+
+	public void setCustomerPhone(int customerPhone) {
+		this.CustomerPhone = customerPhone;
+	}
+
+	public User getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(User customerId) {
+		this.customerId = customerId;
+	}
+
+
 	@ManyToMany
 	@JoinTable(name = "meal_order",
 				joinColumns = { @JoinColumn(name = "order_id") },
