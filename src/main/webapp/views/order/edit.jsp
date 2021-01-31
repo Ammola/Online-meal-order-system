@@ -1,25 +1,29 @@
 <jsp:include page="../shared/_layout.jsp" />
 <form action="${appName}order/add" method="post">
 	<div>
-		<label>Customer's Name</label> <input type="text" name="CustomerName" value="${order.CustomerName }">
+
+		<label>Customer's Name</label> <input type="text" name="customerName" value="${order.customerName }">
+
 	</div>
 	<div>
 		<label>customerId</label> <input type="text" name="customerId" value="${order.customerId }">
 	</div>
 	<div>
-		<label>CustomerPhone</label> <input type="text" name="CustomerPhone" value="${order.CustomerPhone }">
+
+		<label>CustomerPhone</label> <input type="text" name="customerPhone" value="${order.customerPhone }">
 	</div>
 	<div>
-		<label>Order ID </label> <input type="text" name="Orderid" value="${order.Orderid }">
+		<label>Order ID </label> <input type="text" name="orderid" value="${order.orderid }">
 	</div>
 	<div>
-		<label>Quantity </label> <input type="text" name="Quantity" value="${order.Quantity }">
+		<label>Quantity </label> <input type="text" name="quantity" value="${order.quantity }">
 	</div>
 	<div>
-		<label>Price </label> <input type="text" name="Price" value="${order.Price }">
+		<label>Price </label> <input type="text" name="price" value="${order.price }">
 	</div>
 	<div>
-		<label>OrderDate</label> <input type="date" name="OrderDate" value="${order.OrderDate }">
+		<label>OrderDate</label> <input type="date" name="orderDate" value="${order.orderDate }">
+
 	</div>
 
  <!--  may name will be - name = id -->
@@ -28,4 +32,3 @@
 	<button type="submit">Submit</button>
 	
 </form>
-	

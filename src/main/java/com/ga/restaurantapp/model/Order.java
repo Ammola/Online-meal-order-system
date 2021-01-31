@@ -12,10 +12,12 @@ public class Order {
 	@Id
 	@GeneratedValue
 
-	@Column(length = 3)
-	private int Orderid;
+	private int orderId;
+	private Date orderDate;
 	
-	private int Quantity ,Price;
+	private int quantity;
+	
+	private int customerID;
 	
 	private Date OrderDate;
 	
@@ -59,50 +61,36 @@ public class Order {
 				joinColumns = { @JoinColumn(name = "order_id") },
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
 	private Set<Meal> meals;
-	public int getOrderid() {
-		return Orderid;
-
-	}
-	
-	
-	@Column(name="createdAt", nullable = false, updatable = false)
-	@CreationTimestamp
-	private LocalDateTime createAt;
-
-	@Column(name="updatedat", nullable = false, updatable = true)
-	@UpdateTimestamp
-	private LocalDateTime updateAt;
 
 	public int getOrderId() {
-		return Orderid;
+		return orderId;
 	}
+	public void setOrderId(int orderid) {
+		orderId = orderid;
 
-	public void setOrderid(int orderid) {
-		Orderid = orderid;
 	}
 	
 
 	public Date getOrderDate() {
-		return OrderDate;
+		return orderDate;
 	}
 	public void setOrderDate(Date orderDate) {
 
-		this.OrderDate = orderDate;
+		this.orderDate = orderDate;
+
 	}
 	public int getQuantity() {
-		return Quantity;
+		return quantity;
 	}
 	public void setQuantity(int quantity) {
 
-		this.Quantity = quantity;
+		this.quantity = quantity;
 	}
-
-	public int getPrice() {
-		return Price;
+	public int getCustomerID() {
+		return customerID;
 	}
-
-	public void setPrice(int price) {
-		this.Price = price;
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
 
 	}
 	public Set<Meal> getMeal() {
