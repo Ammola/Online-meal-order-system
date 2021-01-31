@@ -21,6 +21,37 @@ public class OrderController {
 	@Autowired 
 	private Environment env;
 	
+	public Environment getEnv() {
+		return env;
+	}
+
+	public void setEnv(Environment env) {
+		this.env = env;
+	}
+
+	public UserController getUc() {
+		return uc;
+	}
+
+	public void setUc(UserController uc) {
+		this.uc = uc;
+	}
+
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+	public OrderDao getDao() {
+		return dao;
+	}
+
+	public void setDao(OrderDao dao) {
+		this.dao = dao;
+	}
 	@Autowired
 	private UserController uc;
 	

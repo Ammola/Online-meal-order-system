@@ -10,12 +10,12 @@ public class Meal {
 	
 	@Id
 	@GeneratedValue
-	private int MealId;
-	private String MealName;
+	private int mealId;
+	private String mealName;
 	@Column(length = 50)
-	private int MealPrice;
-	private int Calories;
-	private String Description;
+	private int mealPrice;
+	private int calories;
+	private String description;
 	
 	@ManyToOne
 	@JoinColumn(name="FK_AdmiId")
@@ -31,22 +31,22 @@ public class Meal {
 	@UpdateTimestamp
 	private LocalDateTime updateAt;
 	public int getMealId() {
-		return MealId;
+		return mealId;
 	}
 	public void setMealId(int mealId) {
-		MealId = mealId;
+		this.mealId = mealId;
 	}
 	public String getMealName() {
-		return MealName;
+		return mealName;
 	}
 	public void setMealName(String mealName) {
-		MealName = mealName;
+		this.mealName = mealName;
 	}
 	public int getMealPrice() {
-		return MealPrice;
+		return mealPrice;
 	}
 	public void setMealPrice(int mealPrice) {
-		MealPrice = mealPrice;
+		this.mealPrice = mealPrice;
 	}
 	public Set<Order> getOrders() {
 		return orders;
@@ -54,17 +54,19 @@ public class Meal {
 	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
 	}
+	
 	public int getCalories() {
-		return Calories;
+		return calories;
 	}
 	public void setCalories(int calories) {
-		Calories = calories;
+		this.calories = calories;
 	}
+	
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 	
 }

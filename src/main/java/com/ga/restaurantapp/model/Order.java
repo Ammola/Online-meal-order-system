@@ -13,15 +13,15 @@ public class Order {
 	@Id
 	@GeneratedValue
 	@Column(length = 3)
-	private int Orderid;
+	private int orderId;
 	
-	private int Quantity ,Price;
+	private int quantity ,price;
 	
-	private Date OrderDate;
+	private Date orderDate;
 	
-	private String CustomerName;
+	private String customerName;
 	@Column(length = 10)
-	private int CustomerPhone;
+	private int customerPhone;
 	
 	@ManyToOne
 	@JoinColumn(name="FK_CustomerId")
@@ -29,19 +29,19 @@ public class Order {
 
 	
 	public String getCustomerName() {
-		return CustomerName;
+		return customerName;
 	}
 
 	public void setCustomerName(String customerName) {
-		CustomerName = customerName;
+		this.customerName = customerName;
 	}
 
 	public int getCustomerPhone() {
-		return CustomerPhone;
+		return customerPhone;
 	}
 
 	public void setCustomerPhone(int customerPhone) {
-		this.CustomerPhone = customerPhone;
+		this.customerPhone = customerPhone;
 	}
 
 	public User getCustomerId() {
@@ -59,9 +59,7 @@ public class Order {
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
 
 	private Set<Meal> meals;
-	public int getOrderid() {
-		return Orderid;
-	}
+	
 	
 	
 	@Column(name="createdAt", nullable = false, updatable = false)
@@ -73,40 +71,37 @@ public class Order {
 	private LocalDateTime updateAt;
 
 	public int getOrderId() {
-		return Orderid;
+		return orderId;
 	}
 
-	public void setOrderid(int orderid) {
-		Orderid = orderid;
+	public void setOrderId(int orderid) {
+		orderId = orderid;
 	}
 	
 	public Date getOrderDate() {
-		return OrderDate;
+		return orderDate;
 	}
 
 	public void setOrderDate(Date orderDate) {
-		this.OrderDate = orderDate;
+		this.orderDate = orderDate;
 	}
 
 	public int getQuantity() {
-		return Quantity;
+		return quantity;
 	}
 
 	public void setQuantity(int quantity) {
-		this.Quantity = quantity;
+		this.quantity = quantity;
 	}
 
 	public int getPrice() {
-		return Price;
+		return price;
 	}
 
 	public void setPrice(int price) {
-		this.Price = price;
+		this.price = price;
 	}
 
-	public Set<Meal> getMeal() {
-		return meals;
-	}
 	
 	public Set<Meal> getMeals() {
 		return meals;
