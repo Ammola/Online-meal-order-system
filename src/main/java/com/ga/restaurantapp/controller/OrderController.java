@@ -86,6 +86,7 @@ public class OrderController {
 	@GetMapping("/order/delete")
 	public String deleteOrder(@RequestParam int id) {
 		dao.deleteById(id);
+
 		return "redirect:/order/index";
 	}
 }

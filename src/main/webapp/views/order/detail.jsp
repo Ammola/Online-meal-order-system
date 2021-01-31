@@ -1,5 +1,6 @@
 <jsp:include page="../shared/_layout.jsp" />
 
+
 Customer's Name : ${order.customerName} <br><br>
 
 customerId : ${order.customerId} <br><br>
