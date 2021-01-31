@@ -7,6 +7,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ga.restaurantapp.dao.OrderDao;
@@ -59,5 +60,32 @@ public class OrderController {
 		HomeController hc = new HomeController();
 		hc.setAppName(mv, env);
 		return mv;
+	}
+	@GetMapping("/order/detail")
+	public ModelAndView orderDetails(@RequestParam int id) {
+		System.out.println(id);
+		Order order = dao.findById(id);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("order/detail");
+		mv.addObject("order", order);
+		HomeController hc = new HomeController();
+		hc.setAppName(mv, env);
+		return mv;
+	}
+	@GetMapping("/order/edit")
+	public ModelAndView editOrder(@RequestParam int id) {
+		System.out.println(id);
+		Order order = dao.findById(id);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("order/edit");
+		mv.addObject("order", order);
+		HomeController hc = new HomeController();
+		hc.setAppName(mv, env);
+		return mv;
+	}
+	@GetMapping("/order/delete")
+	public String deleteOrder(@RequestParam int id) {
+		dao.deleteById(id);
+		return "redirect:/author/index";
 	}
 }

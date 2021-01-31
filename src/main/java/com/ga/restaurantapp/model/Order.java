@@ -12,6 +12,7 @@ public class Order {
 	
 	@Id
 	@GeneratedValue
+	@Column(length = 3)
 	private int Orderid;
 	
 	private int Quantity ,Price;
@@ -19,7 +20,7 @@ public class Order {
 	private Date OrderDate;
 	
 	private String CustomerName;
-	
+	@Column(length = 10)
 	private int CustomerPhone;
 	
 	@ManyToOne

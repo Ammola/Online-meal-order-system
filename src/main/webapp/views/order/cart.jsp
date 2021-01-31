@@ -3,7 +3,7 @@
 
 <form action="/restaurant/order/add" method="post">
 	<div>
-		<label>Customer Name's</label> <input type="text" name="CustomerName">
+		<label>Customer's Name</label> <input type="text" name="CustomerName">
 	</div>
 	<div>
 		<label>customerId</label> <input type="text" name="customerId">
