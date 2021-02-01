@@ -1,7 +1,11 @@
 package com.ga.restaurantapp.model;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 @Entity
 @Table(name="Orders")
 public class Order {
@@ -9,9 +13,7 @@ public class Order {
 	@GeneratedValue
 	private int orderId;
 	private Date orderDate;
-	
 	private int quantity;
-	
 	private int customerID;
 	
 	
@@ -22,15 +24,21 @@ public class Order {
 	
 	
 	@ManyToMany
-	@JoinTable(name = "meal_order",
+	@JoinTable(name = "meal_orders",
 				joinColumns = { @JoinColumn(name = "order_id") },
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
 	private Set<Meal> meals;
+	@Column(name="createdAt", nullable = false, updatable = false)
+	@CreationTimestamp
+	private LocalDateTime createAt;
+	@Column(name="updatedat", nullable = false, updatable = true)
+	@UpdateTimestamp
+	private LocalDateTime updateAt;
 	public int getOrderId() {
 		return orderId;
 	}
 	public void setOrderId(int orderid) {
-		orderId = orderid;
+		this.orderId = orderid;
 	}
 	public Date getOrderDate() {
 		return orderDate;
@@ -50,12 +58,32 @@ public class Order {
 	public void setCustomerID(int customerID) {
 		this.customerID = customerID;
 	}
-	public Set<Meal> getMeal() {
+	public User getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(User customerId) {
+		this.customerId = customerId;
+	}
+	public Set<Meal> getMeals() {
 		return meals;
 	}
-	public void setMeal(Set<Meal> meal) {
-		this.meals = meal;
+	public void setMeals(Set<Meal> meals) {
+		this.meals = meals;
 	}
+	public LocalDateTime getCreateAt() {
+		return createAt;
+	}
+	public void setCreateAt(LocalDateTime createAt) {
+		this.createAt = createAt;
+	}
+	public LocalDateTime getUpdateAt() {
+		return updateAt;
+	}
+	public void setUpdateAt(LocalDateTime updateAt) {
+		this.updateAt = updateAt;
+	}
+	
+	
 	
 	
 	
