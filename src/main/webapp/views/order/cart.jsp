@@ -15,7 +15,7 @@
 		<label>CustomerPhone</label> <input type="text" name="customerPhone">
 	</div>
 	<div>
-		<label>Order ID </label> <input type="text" name="orderid">
+		<label>Order ID </label> <input type="text" name="orderId">
 	</div>
 	<div>
 		<label>Quantity </label> <input type="text" name="quantity">
@@ -28,5 +28,9 @@
 	</div>
 	
 	<button type="submit">checkout</button>
+<<<<<<< HEAD
 	</form>
 
+=======
+	</form>
+>>>>>>> Ibrahim-dev
