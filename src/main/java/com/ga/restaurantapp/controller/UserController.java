@@ -60,7 +60,7 @@ public class UserController {
 		 
 		 for(User dbUser : it) {
 			 if(dbUser.getEmailAddress().equals(user.getEmailAddress())) {
-				 mv.addObject("message", "User already exists");
+				 mv.addObject("alarm", "User already exists");
 				 return mv;
 			 }
 		 }
@@ -155,6 +155,13 @@ public class UserController {
 		 
 		  HomeController hc = new HomeController(); hc.setAppName(mv, env);
 		  
+			
+		if(!uc.isUserLoggedIn())
+				{
+					mv.setViewName("home/index");
+				}
+				
+		  
 		  return mv; }
 		  
 		// HTTP GET REQUEST - profile Edit
@@ -183,6 +190,11 @@ public class UserController {
 				
 				HttpSession session = request.getSession(); 
 				int userId = (int) session.getAttribute("userId");
+				
+				if(!uc.isUserLoggedIn())
+				{
+					return "redirect:/home/index";
+				}
 				 
 				//User user = dao.findById(userId);
 				return "redirect:/user/edit?id="+userId; 			
@@ -214,6 +226,13 @@ public class UserController {
 				 
 				 dao.save(user);
 				 mv.addObject("message", "Your profile was updated successfully");
+				 
+					
+				if(!uc.isUserLoggedIn())
+						{
+							mv.setViewName("home/index");
+						}
+						
 				 
 				 return mv;
 				 

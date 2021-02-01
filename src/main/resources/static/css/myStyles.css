@@ -71,6 +71,7 @@ padding-left: 400px;
     cursor: pointer;
     background: #0062cc;
     color: #fff;
+    display:inline-block;
 }
 
 .table-striped>tbody>tr:nth-child(odd)>td, 
