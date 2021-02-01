@@ -27,7 +27,7 @@ public class HomeController {
 	public ModelAndView setAppName(ModelAndView mv, @Autowired Environment env) {
 		String appName = env.getProperty("app.name");
 		mv.addObject("appName", appName);
-		mv.addObject("Welcome", "Welcome to our Restaurant");
+		mv.addObject("Welcome", "Your delecious meal is one click away!!");
 
 		return mv;
 	}

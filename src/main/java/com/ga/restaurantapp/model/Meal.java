@@ -17,8 +17,37 @@ public class Meal {
 	
 	@Column(length = 50)
 	private String mealName;
+	
 	private int mealPrice;
 	
+	private int calories;
+	
+	private String mealDescription;
+	
+	public int getCalories() {
+		return calories;
+	}
+
+	public void setCalories(int calories) {
+		this.calories = calories;
+	}
+
+	public String getMealDescription() {
+		return mealDescription;
+	}
+
+	public void setMealDescription(String mealDescription) {
+		this.mealDescription = mealDescription;
+	}
+
+	public User getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(User admin) {
+		this.admin = admin;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="FK_AdmiId")
 	private User admin;
