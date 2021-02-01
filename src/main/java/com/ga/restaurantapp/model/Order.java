@@ -23,13 +23,13 @@ public class Order {
 
 	@ManyToOne
 	@JoinColumn(name="FK_CustomerId")
-	private User customerId;
+	private User customer;
 
 	@ManyToMany
 	@JoinTable(name = "meal_order",
 				joinColumns = { @JoinColumn(name = "order_id") },
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
-	private Set<Meal> meals;
+	private Set<Meal> OrderedMeals;
 
 	public int getOrderId() {
 		return orderId;
@@ -68,17 +68,17 @@ public class Order {
 	public void setCustomerPhone(int customerPhone) {
 		CustomerPhone = customerPhone;
 	}
-	public User getCustomerId() {
-		return customerId;
+	public User getCustomer() {
+		return customer;
 	}
-	public void setCustomerId(User customerId) {
-		this.customerId = customerId;
+	public void setCustomer(User customer) {
+		this.customer = customer;
 	}
-	public Set<Meal> getMeals() {
-		return meals;
+	public Set<Meal> getOrderedMeals() {
+		return OrderedMeals;
 	}
-	public void setMeals(Set<Meal> meals) {
-		this.meals = meals;
+	public void setOrderedMeals(Set<Meal> orderedMeals) {
+		OrderedMeals = orderedMeals;
 	}
 	
 }
