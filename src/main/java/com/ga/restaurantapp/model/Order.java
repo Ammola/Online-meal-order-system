@@ -3,9 +3,6 @@ import java.sql.Date;
 import java.util.Set;
 import javax.persistence.*;
 
-import java.time.LocalDateTime;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 @Entity
 @Table(name="Orders")
 public class Order {
@@ -13,13 +10,12 @@ public class Order {
 	@GeneratedValue
 
 	private int orderId;
+	
 	private Date orderDate;
 	
 	private int quantity;
 	
 	private int customerID;
-	
-	private Date OrderDate;
 	
 	private String CustomerName;
 	@Column(length = 10)
@@ -28,33 +24,6 @@ public class Order {
 	@ManyToOne
 	@JoinColumn(name="FK_CustomerId")
 	private User customerId;
-
-
-	
-	public String getCustomerName() {
-		return CustomerName;
-	}
-
-	public void setCustomerName(String customerName) {
-		CustomerName = customerName;
-	}
-
-	public int getCustomerPhone() {
-		return CustomerPhone;
-	}
-
-	public void setCustomerPhone(int customerPhone) {
-		this.CustomerPhone = customerPhone;
-	}
-
-	public User getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(User customerId) {
-		this.customerId = customerId;
-	}
-
 
 	@ManyToMany
 	@JoinTable(name = "meal_order",
@@ -69,21 +38,16 @@ public class Order {
 		orderId = orderid;
 
 	}
-	
-
 	public Date getOrderDate() {
 		return orderDate;
 	}
 	public void setOrderDate(Date orderDate) {
-
 		this.orderDate = orderDate;
-
 	}
 	public int getQuantity() {
 		return quantity;
 	}
 	public void setQuantity(int quantity) {
-
 		this.quantity = quantity;
 	}
 	public int getCustomerID() {
@@ -91,10 +55,30 @@ public class Order {
 	}
 	public void setCustomerID(int customerID) {
 		this.customerID = customerID;
-
 	}
-	public Set<Meal> getMeal() {
+	public String getCustomerName() {
+		return CustomerName;
+	}
+	public void setCustomerName(String customerName) {
+		CustomerName = customerName;
+	}
+	public int getCustomerPhone() {
+		return CustomerPhone;
+	}
+	public void setCustomerPhone(int customerPhone) {
+		CustomerPhone = customerPhone;
+	}
+	public User getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(User customerId) {
+		this.customerId = customerId;
+	}
+	public Set<Meal> getMeals() {
 		return meals;
+	}
+	public void setMeals(Set<Meal> meals) {
+		this.meals = meals;
 	}
 	
 }
