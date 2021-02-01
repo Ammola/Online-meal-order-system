@@ -18,7 +18,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-group">
-						<label class="inline-label"> Password </label> <input name="password" type="password"
+						<label > Password </label> <input name="password" type="password"
 							class="form-control">
 					</div>
 				</div>

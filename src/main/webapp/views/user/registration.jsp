@@ -39,7 +39,7 @@
 							<input name="confirmPassword" type="password"
 								class="form-control" placeholder="Confirm Password *" value=""
 								id="confirmPassword" onkeyup="matchPassword();" required />
-								<span id='message'></span>
+								<span id="message"></span>
 						</div>
 					</div>
 

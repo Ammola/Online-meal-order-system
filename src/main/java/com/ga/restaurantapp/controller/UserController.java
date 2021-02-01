@@ -105,6 +105,8 @@ public class UserController {
 			 if(matchedUser != null) {
 				 if(bCrypt.matches(password, matchedUser.getPassword())) {
 					 
+					 System.out.println("matched user"+bCrypt.matches(password, matchedUser.getPassword()));
+					 
 					 // Session
 					  session.setAttribute("user", matchedUser);
 					  session.setAttribute("userRole", matchedUser.getUserRole());
@@ -164,7 +166,7 @@ public class UserController {
 		  
 		  return mv; }
 		  
-		// HTTP GET REQUEST - profile Edit
+		    // HTTP GET REQUEST - profile Edit
 			@GetMapping("/user/edit")
 			public ModelAndView editProfile(@RequestParam int id) {
 			User user = dao.findById(id);
@@ -267,8 +269,10 @@ public class UserController {
 						 
 						 BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
 						 String newPassword = user.getPassword();
-						 user.setPassword(bCrypt.encode(newPassword));
-						 user.setPassword(newPassword);
+						 String encryptPassword = bCrypt.encode(newPassword);
+						 user.setPassword(encryptPassword);
+						
+						 System.out.println("newPassword "+newPassword);
 						 
 						 String role = user.getUserRole();
 						 user.setUserRole(role);
@@ -313,6 +317,26 @@ public class UserController {
 						 return mv;
 				  
 				  }
+				  
+				    // HTTP GET REQUEST - profile Edit
+					@GetMapping("/user/password")
+					public ModelAndView editPassword(@RequestParam int id) {
+					User user = dao.findById(id);
+						
+					ModelAndView mv = new ModelAndView();
+					mv.setViewName("user/password");
+					mv.addObject("user", user);
+						
+					HomeController hc = new HomeController();
+					hc.setAppName(mv, env);
+						
+					if(!uc.isUserLoggedIn())
+						{
+							mv.setViewName("home/index");
+						}
+						
+						return mv;
+					}
 			
 			 
 			 
