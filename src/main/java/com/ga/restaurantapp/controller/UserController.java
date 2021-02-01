@@ -251,7 +251,7 @@ public class UserController {
 						return "redirect:/home/index";
 					}
 				  
-				  return "redirect:/user/edit_password?id="+userId;
+				  return "redirect:/user/password?id="+userId;
 				  
 				  }
 				  
@@ -300,9 +300,6 @@ public class UserController {
 						 String additionalNumber = user.getAdditionalNumber();
 						 user.setAdditionalNumber(additionalNumber);
 		
-						 
-						 
-						 
 						 dao.save(user);
 						 mv.addObject("message", "Your password was updated successfully");
 						 

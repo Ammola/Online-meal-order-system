@@ -1,5 +1,5 @@
 <jsp:include page="../shared/_layout.jsp" />
-<form action="${appName}user/edit-profile" method="post">
+<form action="${appName}user/edit-password" method="post">
 	<div class="container register-form">
 		<div class="form">
 			<!-- <div class="note">
