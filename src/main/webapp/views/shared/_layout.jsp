@@ -10,6 +10,7 @@
 href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
 crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/myStyles.css">
 <link rel="stylesheet" href="css/myStyles.css">
 <%-- <c:url value="../js/myMain.js" var="myUrl" />
@@ -49,11 +50,13 @@ document.getElementById("demo").innerHTML = 5 + 6;
 	%>
 	<a href="${appName}order/index">My Orders</a>
 
+
 	<div style="text-align: right; float: right;">
 		<a href="${appName}user/cart">Cart</a> | 
 		<a href="${appName}user/profile">Profile</a> | 
 		<a href="${appName}user/logout">Logout</a>
 	</div>
+
 
 	<%
 	} else {
@@ -63,10 +66,9 @@ document.getElementById("demo").innerHTML = 5 + 6;
 	<a href="${appName}meal/index">Meals</a>
 
 	<div style="text-align: right; float: right;">
-		<a href="${appName}user/login">Login</a> | <a
+		<a href="${appName}user/login">Login<i class="fa fa-sign-in"></i></a> | <a
 			href="${appName}user/registration">Sign up</a>
 	</div>
-
 	<%
 	}
 	%>
@@ -96,7 +98,5 @@ document.getElementById("demo").innerHTML = 5 + 6;
 		$('.fade').slideUp(4000);
 	</script>
 	
-
-
 </body>
 </html>
