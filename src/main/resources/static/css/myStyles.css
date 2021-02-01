@@ -4,14 +4,32 @@ body {
 	padding: 20px;
 }
 
+.inline-label { 
+    white-space: nowrap;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float:left;     
+    }
+
 .homepage {
-	padding: 20px;
-	background-image: url("../images/books.jpg");
+	padding: 50px;
+	background-image: url("../images/banner.png");
 	background-position: center; 
 	background-repeat: no-repeat; 
 	background-size: cover;
 	height: 500px;
 }
+
+.banner {
+	padding: 50px;
+	background-image: url("../images/banner.png");
+	background-position: center; 
+	background-repeat: no-repeat; 
+	background-size: cover;
+	height: 500px;
+}
+
 
 .homeDiv{
   display: flex;
@@ -22,4 +40,42 @@ body {
 padding-left: 400px;	
 }	
 
+#inputStreet {
+  width: 100%;
+}
+
+.note
+{
+    text-align: center;
+    height: 80px;
+    background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+}
+.form-content
+{
+    padding: 5%;
+    margin-bottom: 5%;
+}
+.form-control{
+    border-radius:0.5rem;
+}
+.btnSubmit
+{
+	padding: 10%;
+    border:none;
+    border-radius:1.5rem;
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    background: #0080ff;
+    color: #ffffff;
+    display:inline-block;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: rgb(203, 231, 252);
+ }
 

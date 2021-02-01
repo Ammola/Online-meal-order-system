@@ -18,7 +18,14 @@ public class User {
 		private String firstName;
 		private String lastName;
 		private String emailAddress;
+		private String mobile;
 		private String password;
+		private String buildingNumber;
+		private String streetName;
+		private String district;
+		private String city;
+		private String postalCode;
+		private String additionalNumber;
 		private String userRole;
 		
 		@OneToMany(mappedBy="admin")
@@ -34,6 +41,47 @@ public class User {
 		@Column(name="updatedat", nullable = false, updatable = true)
 		@UpdateTimestamp
 		private LocalDateTime updateAt;
+		
+		
+		public String getBuildingNumber() {
+			return buildingNumber;
+		}
+
+		public void setBuildingNumber(String buildingNumber) {
+			this.buildingNumber = buildingNumber;
+		}
+
+		public String getStreetName() {
+			return streetName;
+		}
+
+		public void setStreetName(String streetName) {
+			this.streetName = streetName;
+		}
+
+		public String getDistrict() {
+			return district;
+		}
+
+		public void setDistrict(String district) {
+			this.district = district;
+		}
+
+		public String getPostalCode() {
+			return postalCode;
+		}
+
+		public void setPostalCode(String postalCode) {
+			this.postalCode = postalCode;
+		}
+
+		public String getAdditionalNumber() {
+			return additionalNumber;
+		}
+
+		public void setAdditionalNumber(String additionalNumber) {
+			this.additionalNumber = additionalNumber;
+		}
 
 		public int getId() {
 			return id;
@@ -114,4 +162,21 @@ public class User {
 		public void setOrders(Set<Order> orders) {
 			this.orders = orders;
 		}
-	}
+		
+		public String getMobile() {
+			return mobile;
+		}
+
+		public void setMobile(String mobile) {
+			this.mobile = mobile;
+		}
+
+		public String getCity() {
+			return city;
+		}
+
+		public void setCity(String city) {
+			this.city = city;
+		}
+		
+}

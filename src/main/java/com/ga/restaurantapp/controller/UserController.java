@@ -1,5 +1,4 @@
 package com.ga.restaurantapp.controller;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,8 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.ga.restaurantapp.dao.UserDao;
 import com.ga.restaurantapp.model.User;
 
@@ -25,6 +24,9 @@ public class UserController {
 	
 	@Autowired
 	HttpServletRequest request;
+	
+	@Autowired
+	private UserController uc;
 	
 	// Routes 
 	
@@ -47,7 +49,7 @@ public class UserController {
 
 		 
 		 ModelAndView mv = new ModelAndView();
-		 mv.setViewName("home/index");
+		 mv.setViewName("user/login");
 		 
 		 HomeController hc = new HomeController();
 		 hc.setAppName(mv, env);
@@ -58,7 +60,7 @@ public class UserController {
 		 
 		 for(User dbUser : it) {
 			 if(dbUser.getEmailAddress().equals(user.getEmailAddress())) {
-				 mv.addObject("message", "User already exists");
+				 mv.addObject("alarm", "User already exists");
 				 return mv;
 			 }
 		 }
@@ -103,11 +105,17 @@ public class UserController {
 			 if(matchedUser != null) {
 				 if(bCrypt.matches(password, matchedUser.getPassword())) {
 					 
+					 System.out.println("matched user"+bCrypt.matches(password, matchedUser.getPassword()));
+					 
 					 // Session
 					  session.setAttribute("user", matchedUser);
 					  session.setAttribute("userRole", matchedUser.getUserRole());
+					  session.setAttribute("userId", matchedUser.getId());
 					  
 					  session.setAttribute("message", "you are logged in successfully");
+					  
+					  System.out.println("is password matched?");
+					  System.out.println(bCrypt.matches(password, matchedUser.getPassword()));
 					  
 					  return "redirect:/";
 					 
@@ -115,14 +123,15 @@ public class UserController {
 			 }
 			
 		
-		  session.setAttribute("message", "Username or password is incorrect"); return
+		  session.setAttribute("alarm", "Username or password is incorrect"); return
 		 "redirect:/user/login"; }
 		 
 		
 		// To invalidate the current user session
 		
-		  @GetMapping("/user/logout") public String logout() { HttpSession session =
-		  request.getSession(); session.invalidate();
+		  @GetMapping("/user/logout") public String logout() { 
+		  HttpSession session = request.getSession(); 
+		  session.invalidate();
 		  
 		  return "redirect:/user/login"; }
 		 
@@ -135,20 +144,240 @@ public class UserController {
 		  == null) { return false; } else { return true; } }
 		 
 		
-		// Load user profile
-		@GetMapping("/user/profile")
-		public ModelAndView profile() {
-			   
-			   ModelAndView mv = new ModelAndView();
-			   mv.setViewName("user/profile");
-			   
-			   HomeController hc = new HomeController();
-			   hc.setAppName(mv, env);
-			   
-			   return mv;
-		   }
+		  // Load user profile	  
+		  @GetMapping("/user/profile") public ModelAndView profile() {
+		  
+		  HttpSession session = request.getSession(); 
+		  int userId = (int) session.getAttribute("userId");
+		 
+		  User user = dao.findById(userId);
+		 
+		  ModelAndView mv = new ModelAndView(); mv.setViewName("user/profile");
+		  mv.addObject("user", user);
+		 
+		  HomeController hc = new HomeController(); hc.setAppName(mv, env);
+		  
+			
+		if(!uc.isUserLoggedIn())
+				{
+					mv.setViewName("home/index");
+				}
+				
+		  
+		  return mv; }
+		  
+		    // HTTP GET REQUEST - profile Edit
+			@GetMapping("/user/edit")
+			public ModelAndView editProfile(@RequestParam int id) {
+			User user = dao.findById(id);
+				
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("user/edit");
+			mv.addObject("user", user);
+				
+			HomeController hc = new HomeController();
+			hc.setAppName(mv, env);
+				
+			if(!uc.isUserLoggedIn())
+				{
+					mv.setViewName("home/index");
+				}
+				
+				return mv;
+			}
+			
+			//// HTTP GET REQUEST - profile Edit
+			@GetMapping("/user/edit-profile")
+			public String editProfileButton() {
+				
+				HttpSession session = request.getSession(); 
+				int userId = (int) session.getAttribute("userId");
+				
+				if(!uc.isUserLoggedIn())
+				{
+					return "redirect:/home/index";
+				}
+				 
+				//User user = dao.findById(userId);
+				return "redirect:/user/edit?id="+userId; 			
+				
+				}
+						
+								
+			// To post the registration form
+			 @PostMapping("/user/edit-profile")
+			 public ModelAndView editProfile(User user) {
+
+				 
+				 ModelAndView mv = new ModelAndView();
+				 mv.setViewName("user/profile");
+				 
+				 HomeController hc = new HomeController();
+				 hc.setAppName(mv, env);
+				
+				 // Password Encryption
+				 //BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
+				 
+				 String newPassword = user.getPassword();
+				 String role = user.getUserRole();
+				 
+				 user.setPassword(newPassword);
+				 //System.out.println("role"+role);
+				 //user.setPassword(bCrypt.encode(newPassword));
+				 user.setUserRole(role);
+				 
+				 dao.save(user);
+				 mv.addObject("message", "Your profile was updated successfully");
+				 
+					
+				if(!uc.isUserLoggedIn())
+						{
+							mv.setViewName("home/index");
+						}
+						
+				 
+				 return mv;
+				 
+			 }
+			 
+				
+				 // HTTP GET REQUEST - profile Edit
+				  @GetMapping("/user/edit-password") 
+				  public String editPasswordButton() {
+				  
+				  HttpSession session = request.getSession(); 
+				  int userId = (int) session.getAttribute("userId");
+				  
+				  if(!uc.isUserLoggedIn())
+					{
+						return "redirect:/home/index";
+					}
+				  
+				  return "redirect:/user/password?id="+userId;
+				  
+				  }
+				  
+				// HTTP GET REQUEST - profile Edit
+				  @PostMapping("/user/edit-password") 
+				  public ModelAndView  editPassword(User user) {
+				  
+					  ModelAndView mv = new ModelAndView();
+						 mv.setViewName("user/profile");
+						 
+						 HomeController hc = new HomeController();
+						 hc.setAppName(mv, env);
+						 
+						 BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
+						 String newPassword = user.getPassword();
+						 String encryptPassword = bCrypt.encode(newPassword);
+						 user.setPassword(encryptPassword);
+						
+						 System.out.println("newPassword "+newPassword);
+						 
+						 String role = user.getUserRole();
+						 user.setUserRole(role);
+						 
+						 String firstName = user.getFirstName();
+						 user.setFirstName(firstName);
+						 
+						 String lastName = user.getLastName();
+						 user.setLastName(lastName);
+						 
+						 String mobile = user.getMobile();
+						 user.setMobile(mobile);
+						 
+						 String buildingNumber = user.getBuildingNumber();
+						 user.setBuildingNumber(buildingNumber);
+						 
+						 String streetName = user.getStreetName();
+						 user.setStreetName(streetName);
+						 
+						 String district = user.getDistrict();
+						 user.setDistrict(district);
+						 
+						 String city = user.getCity();
+						 user.setCity(city);
+						 
+						 String postalCode = user.getPostalCode();
+						 user.setPostalCode(postalCode);
+						 
+						 String additionalNumber = user.getAdditionalNumber();
+						 user.setAdditionalNumber(additionalNumber);
 		
-		// Load user profile
+						 dao.save(user);
+						 mv.addObject("message", "Your password was updated successfully");
+						 
+							
+						if(!uc.isUserLoggedIn())
+								{
+									mv.setViewName("home/index");
+								}
+								
+						 
+						 return mv;
+				  
+				  }
+				  
+				    // HTTP GET REQUEST - profile Edit
+					@GetMapping("/user/password")
+					public ModelAndView editPassword(@RequestParam int id) {
+					User user = dao.findById(id);
+						
+					ModelAndView mv = new ModelAndView();
+					mv.setViewName("user/password");
+					mv.addObject("user", user);
+						
+					HomeController hc = new HomeController();
+					hc.setAppName(mv, env);
+						
+					if(!uc.isUserLoggedIn())
+						{
+							mv.setViewName("home/index");
+						}
+						
+						return mv;
+					}
+			
+			 
+			 
+					/*
+					 * // To post the registration form
+					 * 
+					 * @PostMapping("/user/edit-password") public ModelAndView editPassword(User
+					 * user) {
+					 * 
+					 * 
+					 * ModelAndView mv = new ModelAndView(); mv.setViewName("user/profile");
+					 * 
+					 * HomeController hc = new HomeController(); hc.setAppName(mv, env);
+					 * 
+					 * // Password Encryption BCryptPasswordEncoder bCrypt = new
+					 * BCryptPasswordEncoder();
+					 * 
+					 * String newPassword = user.getPassword(); String role = user.getUserRole();
+					 * 
+					 * user.setPassword(newPassword); //System.out.println("role"+role);
+					 * user.setPassword(bCrypt.encode(newPassword));
+					 * user.setFirstName(user.getFirstName()); user.setLastName(user.getLastName());
+					 * user.setEmailAddress(user.getEmailAddress());
+					 * user.setStreetName(user.getStreetName());
+					 * user.setAdditionalNumber(user.getAdditionalNumber());
+					 * user.setBuildingNumber(user.getBuildingNumber());
+					 * user.setDistrict(user.getDistrict());
+					 * user.setPostalCode(user.getPostalCode()); user.setCity(user.getCity());
+					 * user.setUserRole(user.getUserRole()); user.setMobile(user.getMobile());
+					 * 
+					 * dao.save(user); mv.addObject("message",
+					 * "Your password was updated successfully");
+					 * 
+					 * return mv;
+					 * 
+					 * }
+					 * 
+					 */
+		
+		
+		// Load user cart
 		@GetMapping("/user/cart")
 		public ModelAndView cart() {
 					   
@@ -160,6 +389,8 @@ public class UserController {
 					   
 			   return mv;
 				   }
+		
+		
 	 
 }
 

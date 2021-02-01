@@ -12,11 +12,11 @@ public class Meal {
 	@GeneratedValue
 	private int mealId;
 	private String mealName;
-	@Column(length = 50)
 	private int mealPrice;
 	private int calories;
 	private String description;
 	private String mealImg;
+
 	@ManyToOne
 	@JoinColumn(name="FK_AdmniId")
 	private User admin;
