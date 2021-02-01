@@ -1,12 +1,17 @@
 <jsp:include page="../shared/_layout.jsp" />
 <form action="${appName}order/add" method="post">
 	<div>
+
+
 		<label>Customer's Name</label> <input type="text" name="customerName" value="${order.customerName }">
+
+
 	</div>
 	<div>
 		<label>customerId</label> <input type="text" name="customerId" value="${order.customerId }">
 	</div>
 	<div>
+
 		<label>CustomerPhone</label> <input type="text" name="customerPhone" value="${order.customerPhone }">
 	</div>
 	<div>
@@ -20,6 +25,7 @@
 	</div>
 	<div>
 		<label>OrderDate</label> <input type="date" name="orderDate" value="${order.orderDate }">
+
 	</div>
 
  <!--  may name will be - name = id -->
@@ -28,4 +34,3 @@
 	<button type="submit">Submit</button>
 	
 </form>
-	

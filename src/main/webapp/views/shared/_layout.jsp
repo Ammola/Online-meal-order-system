@@ -26,7 +26,7 @@
 <% if(session.getAttribute("userRole").equals("admin")) { %>
 <a href="${appName}meal/add">Add Meal</a> |
 <% } %>
-<a href="${appName}order/add">Add Order</a> |
+
 <a href="${appName}order/index">Orders</a> 
 
 <div style="text-align:right; float:right;">

@@ -8,5 +8,4 @@ public interface MealDao extends CrudRepository <Meal, Integer>{
 
 	public Meal findById(int mealId);
 
-
 }

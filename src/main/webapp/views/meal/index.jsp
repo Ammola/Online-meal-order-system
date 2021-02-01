@@ -12,15 +12,15 @@
         <c:forEach items="${Meals}" var="Meal">
 
 		<tr>
-			<td><a href="${appName}meal/detail?id=${Meal.MealId}">${Meal.MealName}</a></td>
+			<td><a href="${appName}meal/detail?id=${Meal.MealId}">${Meal.mealName}</a></td>
 			<td>${Meal.Description}</td>
 
 	
 
-				<td><a href="${appName}meal/edit?id=${Meal.MealId}">Edit</a>
+				<td><a href="${appName}meal/edit?id=${Meal.mealId}">Edit</a>
 
 	
-  					<a href="${appName}meal/delete?id=${Meal.MealId}">Delete</a></td>
+  					<a href="${appName}meal/delete?id=${Meal.mealId}">Delete</a></td>
 
 		
 		</tr>

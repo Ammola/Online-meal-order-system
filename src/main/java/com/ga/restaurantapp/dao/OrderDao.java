@@ -7,5 +7,6 @@ import com.ga.restaurantapp.model.Order;
 
 public interface OrderDao extends CrudRepository<Order, Integer> {
 
+
 	public Order findById(int orderId);
 }

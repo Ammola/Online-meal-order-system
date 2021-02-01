@@ -16,9 +16,11 @@ public class Meal {
 	private int mealPrice;
 	private int calories;
 	private String description;
-	
+
+	private String mealImg;
+
 	@ManyToOne
-	@JoinColumn(name="FK_AdmiId")
+	@JoinColumn(name="FK_AdmniId")
 	private User admin;
 
 	
@@ -67,7 +69,14 @@ public class Meal {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+
+	}
+	public String getMealImg() {
+		return mealImg;
+	}
+	public void setMealImg(String mealImg) {
+		this.mealImg = mealImg;
+
 	}
 	
 }
-	

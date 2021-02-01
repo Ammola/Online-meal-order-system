@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <jsp:include page="../shared/_layout.jsp" />
 <!--<%@ page language="java" contentType="text/html; charset=windows-1256"
     pageEncoding="windows-1256"%>
@@ -16,6 +17,14 @@
 
 	<div class="form-group">
 		<label>Meal's Name </label> <input type="text" name="mealName" class="form-control">
+=======
+     <jsp:include page="../shared/_layout.jsp" />
+
+      <form action="${appName}meal/add" method="post">
+
+	 <div class="form-group">
+		<label>Meal's Name </label> <input type="text" name="MealName" class="form-control">
+>>>>>>> master
 	</div>
 
 	<div class="form-group">
@@ -31,12 +40,12 @@
 	</div>
 
 	<div class="form-group">
-		<label>Photo </label> <input type="text" name="photo"  class="form-control">
-	</div>
-<!-- 	<div>
-		<label>Article </label> <input type="text" name="article">
-	</div> -->
 
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<label>Image </label> <input type="text" name="mealImg"  class="form-control">
+	</div>
+
+
+	<button type="submit" class="btn btn-primary">Submit</button>
+
 
 </form>
