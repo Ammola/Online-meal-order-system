@@ -12,32 +12,34 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<input name="firstName" type="text" class="form-control"
-								placeholder="First Name *" value="" />
+								placeholder="First Name *" value="" required />
 						</div>
 						<div class="form-group">
 							<input name="emailAddress" type="email" class="form-control"
-								placeholder="Email *" value="" />
+								placeholder="Email *" value="" required />
 						</div>
 						<div class="form-group">
 							<input name="password" type="password" class="form-control"
-								placeholder="Your Password *" value="" id="password" />
+								placeholder="Your Password *" value="" id="password"
+								onkeyup="matchPassword();" required />
 						</div>
 					</div>
 
 					<div class="col-md-6">
 						<div class="form-group">
 							<input name="lastName" type="text" class="form-control"
-								placeholder="Last Name *" value="" />
+								placeholder="Last Name *" value="" required />
 						</div>
 						<div class="form-group">
 							<input name="mobile" type="text" class="form-control"
-								placeholder="Mobile *" value="" />
+								placeholder="Mobile *" value="" required />
 						</div>
 
 						<div class="form-group">
 							<input name="confirmPassword" type="password"
 								class="form-control" placeholder="Confirm Password *" value=""
-								id="confirmPassword" />
+								id="confirmPassword" onkeyup="matchPassword();" required />
+								<span id='message'></span>
 						</div>
 					</div>
 
@@ -51,21 +53,21 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<input name="streetName" type="text" class="form-control"
-								placeholder="Street Name *">
+								placeholder="Street Name *" required>
 						</div>
 					</div>
 
 					<div class="col-md-4">
 						<div class="form-group">
 							<input name="district" type="text" class="form-control"
-								placeholder="District *">
+								placeholder="District *" required>
 						</div>
 					</div>
 
 					<div class="col-md-4">
 						<div class="form-group">
 							<input name="city" type="text" class="form-control"
-								placeholder="City *">
+								placeholder="City *" required>
 						</div>
 					</div>
 
@@ -83,16 +85,16 @@
 						</div>
 					</div>
 					<div class="col-md-4">
-					<div class="form-group">
-						 <select name="userRole"
-							class="form-control">
-							<option value="admin">Admin</option>
-							<option value="user">User</option>
-						</select>
-					</div>
+						<div class="form-group">
+							<select name="userRole" class="form-control">
+								<option value="admin">Admin</option>
+								<option value="user">User</option>
+							</select>
+						</div>
 					</div>
 				</div>
-				<button type="submit" onclick="matchPassword()" class="btnSubmit">Sign Up</button>
+				<button type="submit" onclick="matchPassword()" class="btnSubmit"
+					id="submit">Sign Up</button>
 			</div>
 		</div>
 
@@ -103,11 +105,14 @@
 	function matchPassword() {
 		var pw1 = document.getElementById("password").value;
 		var pw2 = document.getElementById("confirmPassword").value;
-		if (pw1 != pw2) {
-			alert("Passwords did not match");
-			alert(pw1);
+		if (pw1 == pw2) {
+			document.getElementById('submit').disabled = false;
+			document.getElementById('message').style.color = 'green';
+		    document.getElementById('message').innerHTML = 'matching';
 		} else {
-			alert("Password created successfully");
+			document.getElementById('submit').disabled = true;
+			document.getElementById('message').style.color = 'red';
+		    document.getElementById('message').innerHTML = 'not matching';
 		}
 	}
 </script>

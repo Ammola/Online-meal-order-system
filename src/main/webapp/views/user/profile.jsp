@@ -50,16 +50,17 @@ if (session.getAttribute("user") != null) {
 		</tr>
 
 	</table>
-	<div>
-		<form action="${appName}user/edit-profile" method="get">
-			<button type="submit" class="btnSubmit">Edit your profile</button>
+
+<div>	
+		<form action="${appName}user/edit-profile" method="get" style="padding: 1%;">
+			<button type="submit" class="btnSubmit">Edit Profile</button>
 		</form>
-	</div>
-	<div>
-		<form action="${appName}user/edit-password" method="get">
-			<button type="submit" class="btnSubmit">Edit your password</button>
+	
+		<form action="${appName}user/edit-password" method="get" style="padding: 1%;">
+			<button type="submit" class="btnSubmit">Change Password</button>
 		</form>
-	</div>
+</div>
+
 </div>
 
 <%

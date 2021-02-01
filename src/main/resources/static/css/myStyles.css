@@ -44,7 +44,6 @@ padding-left: 400px;
   width: 100%;
 }
 
-
 .note
 {
     text-align: center;
@@ -64,13 +63,14 @@ padding-left: 400px;
 }
 .btnSubmit
 {
+	padding: 10%;
     border:none;
     border-radius:1.5rem;
     padding: 1%;
     width: 20%;
     cursor: pointer;
-    background: #0062cc;
-    color: #fff;
+    background: #0080ff;
+    color: #ffffff;
     display:inline-block;
 }
 

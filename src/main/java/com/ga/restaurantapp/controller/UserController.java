@@ -238,19 +238,87 @@ public class UserController {
 				 
 			 }
 			 
-				/*
-				 * //// HTTP GET REQUEST - profile Edit
-				 * 
-				 * @GetMapping("/user/edit-profile") public String editPassword() {
-				 * 
-				 * HttpSession session = request.getSession(); int userId = (int)
-				 * session.getAttribute("userId");
-				 * 
-				 * //User user = dao.findById(userId); return
-				 * "redirect:/user/edit-password?id="+userId;
-				 * 
-				 * }
-				 */
+				
+				 // HTTP GET REQUEST - profile Edit
+				  @GetMapping("/user/edit-password") 
+				  public String editPasswordButton() {
+				  
+				  HttpSession session = request.getSession(); 
+				  int userId = (int) session.getAttribute("userId");
+				  
+				  if(!uc.isUserLoggedIn())
+					{
+						return "redirect:/home/index";
+					}
+				  
+				  return "redirect:/user/edit_password?id="+userId;
+				  
+				  }
+				  
+				// HTTP GET REQUEST - profile Edit
+				  @PostMapping("/user/edit-password") 
+				  public ModelAndView  editPassword(User user) {
+				  
+					  ModelAndView mv = new ModelAndView();
+						 mv.setViewName("user/profile");
+						 
+						 HomeController hc = new HomeController();
+						 hc.setAppName(mv, env);
+						 
+						 BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
+						 String newPassword = user.getPassword();
+						 user.setPassword(bCrypt.encode(newPassword));
+						 user.setPassword(newPassword);
+						 
+						 String role = user.getUserRole();
+						 user.setUserRole(role);
+						 
+						 String firstName = user.getFirstName();
+						 user.setFirstName(firstName);
+						 
+						 String lastName = user.getLastName();
+						 user.setLastName(lastName);
+						 
+						 String mobile = user.getMobile();
+						 user.setMobile(mobile);
+						 
+						 String buildingNumber = user.getBuildingNumber();
+						 user.setBuildingNumber(buildingNumber);
+						 
+						 String streetName = user.getStreetName();
+						 user.setStreetName(streetName);
+						 
+						 String district = user.getDistrict();
+						 user.setDistrict(district);
+						 
+						 String city = user.getCity();
+						 user.setCity(city);
+						 
+						 String postalCode = user.getPostalCode();
+						 user.setPostalCode(postalCode);
+						 
+						 String additionalNumber = user.getAdditionalNumber();
+						 user.setAdditionalNumber(additionalNumber);
+		
+						 
+						 
+						 
+						 dao.save(user);
+						 mv.addObject("message", "Your password was updated successfully");
+						 
+							
+						if(!uc.isUserLoggedIn())
+								{
+									mv.setViewName("home/index");
+								}
+								
+						 
+						 return mv;
+				  
+				  }
+			
+			 
+			 
 					/*
 					 * // To post the registration form
 					 * 

@@ -22,6 +22,7 @@
 
 					</div>
 				</div>
+				<button type="submit" class="btnSubmit">Save</button>
 			</div>
 		</div>
 	</div>
