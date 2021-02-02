@@ -32,11 +32,9 @@ public class User {
 	    @JoinColumn(name = "cartId", referencedColumnName = "id")
 	    private Cart cart;
 
-		
 		@OneToMany(mappedBy="admin")
 		private Set<Meal> meals;
 
-		
 		@OneToMany(mappedBy="customer")
 		private Set<Order> orders;
 		
@@ -192,6 +190,5 @@ public class User {
 		public void setCart(Cart cart) {
 			this.cart = cart;
 		}
-
 		
 }

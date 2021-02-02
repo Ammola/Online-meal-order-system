@@ -1,17 +1,11 @@
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../shared/_layout.jsp" />
 <table>
 	<tr>
-	   <th>customerName</th>
-		<th>customerId</th>
-		<th>customerPhone</th>
-		<th>Order ID </th>
-		<th> Quantity </th>
-		<th> Price </th>
-		<th> Date </th>
-
-		<th> Action </th>
+	    <th>Order ID</th>
+	    <th>Customer Name</th>
+	    <th>Order Date</th>
+		<th>Total</th>
 	</tr>
 	  
 	  <!-- loop in orders -->

@@ -167,9 +167,8 @@ public class UserController {
 		  mv.addObject("user", user);
 		 
 		  HomeController hc = new HomeController(); hc.setAppName(mv, env);
-		  
-			
-		if(!uc.isUserLoggedIn())
+		  	
+		  if(!uc.isUserLoggedIn())
 				{
 					mv.setViewName("home/index");
 				}
