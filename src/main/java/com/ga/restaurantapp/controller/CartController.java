@@ -109,14 +109,18 @@ public class CartController {
 			@GetMapping("/cart/delete")
 			public String deleteMeal(@RequestParam int id) {
 				
-				System.out.println(" Hi ");
-				System.out.println(" Id "+id);
+				//System.out.println(" Hi ");
+				//System.out.println(" Id "+id);
 
 				//ModelAndView mv = new ModelAndView();
 				
 				HttpSession session = request.getSession();
 				
 				Cart cart = (Cart) session.getAttribute("userCart");
+				Meal meal = mealDao.findById(id);
+				cart.setTotal(cart.getTotal() - meal.getMealPrice());
+				cart.setCartMeals(cartMeals);
+				cartDao.save(cart);
 				
 				System.out.println(cart);
 				
