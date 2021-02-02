@@ -3,6 +3,7 @@ package com.ga.restaurantapp.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -26,7 +27,7 @@ public class Cart {
 	@OneToOne(mappedBy ="cart")
 	private User user;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "meal_cart",
 				joinColumns = { @JoinColumn(name = "cart_id") },
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
