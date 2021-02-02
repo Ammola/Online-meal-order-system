@@ -77,7 +77,7 @@ public class CartController {
 				
 				if(!uc.isUserLoggedIn())
 				{
-					return "redirect:/home/index";
+					return "redirect:/";
 				}
 			  
 			  return "redirect:/cart/index?id="+cartId;
@@ -109,10 +109,7 @@ public class CartController {
 			@GetMapping("/cart/delete")
 			public String deleteMeal(@RequestParam int id) {
 				
-				//System.out.println(" Hi ");
-				//System.out.println(" Id "+id);
-
-				//ModelAndView mv = new ModelAndView();
+				ModelAndView mv = new ModelAndView();
 				
 				HttpSession session = request.getSession();
 				
@@ -164,13 +161,12 @@ public class CartController {
 				
 				// If the user is not logged in
 				if(!uc.isUserLoggedIn()) {
-					return "redirect:/home/index";
+					return "redirect:/";
 				// If the user role is "user" do not give permission for delete		
 				} 
 				
-				//cartDao.save(cart);
-				return "redirect:/";
-				//return "redirect:/cart/index?id="+cart.getId();
+				session.setAttribute("message", "The meal was removed successfully from the cart");
+				return "redirect:/cart/index?id="+cart.getId();
 				
 			}
 			
