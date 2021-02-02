@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ga.restaurantapp.dao.CartDao;
 import com.ga.restaurantapp.dao.UserDao;
+import com.ga.restaurantapp.model.Cart;
 import com.ga.restaurantapp.model.User;
 
 
@@ -21,6 +24,9 @@ public class UserController {
 	
 	@Autowired
 	private UserDao dao;
+	
+	@Autowired
+	private CartDao cartDao;
 	
 	@Autowired
 	HttpServletRequest request;
@@ -71,6 +77,10 @@ public class UserController {
 		 String newPassword = bCrypt.encode(user.getPassword());
 		 user.setPassword(newPassword);
 		 
+		 Cart cart = new Cart();
+		 cartDao.save(cart);
+		 user.setCart(cart);
+		 
 		 dao.save(user);
 		 mv.addObject("message", "User registered successfully");
 		 
@@ -111,6 +121,7 @@ public class UserController {
 					  session.setAttribute("user", matchedUser);
 					  session.setAttribute("userRole", matchedUser.getUserRole());
 					  session.setAttribute("userId", matchedUser.getId());
+					  session.setAttribute("userCart", matchedUser.getCart());
 					  
 					  session.setAttribute("message", "you are logged in successfully");
 					  
@@ -241,7 +252,7 @@ public class UserController {
 			 }
 			 
 				
-				 // HTTP GET REQUEST - profile Edit
+				 // HTTP GET REQUEST - password edit
 				  @GetMapping("/user/edit-password") 
 				  public String editPasswordButton() {
 				  

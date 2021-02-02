@@ -28,10 +28,16 @@ public class User {
 		private String additionalNumber;
 		private String userRole;
 		
+		@OneToOne
+	    @JoinColumn(name = "cartId", referencedColumnName = "id")
+	    private Cart cart;
+
+		
 		@OneToMany(mappedBy="admin")
 		private Set<Meal> meals;
 
-		@OneToMany(mappedBy="customerId")
+		
+		@OneToMany(mappedBy="customer")
 		private Set<Order> orders;
 		
 		@Column(name="createdAt", nullable = false, updatable = false)
@@ -178,5 +184,14 @@ public class User {
 		public void setCity(String city) {
 			this.city = city;
 		}
+		
+		public Cart getCart() {
+			return cart;
+		}
+
+		public void setCart(Cart cart) {
+			this.cart = cart;
+		}
+
 		
 }
