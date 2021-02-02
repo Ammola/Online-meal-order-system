@@ -19,13 +19,13 @@
 			<td>${Meal.calories}</td>
 			<td><img alt="" src="${Meal.mealImg}" width =80px height=80px></td>
 
+	
 
 				<td><a href="${appName}meal/edit?id=${Meal.mealId}">Edit</a>
-  					<a href="${appName}meal/delete?id=${Meal.mealId}">Delete</a>
-  					<form action="${appName}order/confirm">
-                     <input type="submit" value="Confirm" />
-                      </form>
-                      </td>
+
+	
+  					<a href="${appName}meal/delete?id=${Meal.mealId}">Delete</a></td>
+
 		
 		</tr>
 	</c:forEach>
