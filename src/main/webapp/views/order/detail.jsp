@@ -1,9 +1,9 @@
 <jsp:include page="../shared/_layout.jsp" />
 
-<table>
+<table class="table table-striped">
 	<tr>
-		<td>Order Id</td>
-		<td>Customer's Name</td>
+		<th>Order Id</th>
+		<th>Customer's Name</th>
 		<th>Total</th>
 		<th>Order Date</th>
 	</tr>
