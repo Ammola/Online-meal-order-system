@@ -52,7 +52,7 @@ document.getElementById("demo").innerHTML = 5 + 6;
 
 
 	<div style="text-align: right; float: right;">
-		<a href="${appName}user/cart">Cart</a> | 
+		<a href="${appName}cart/get-index">Cart</a> | 
 		<a href="${appName}user/profile">Profile</a> | 
 		<a href="${appName}user/logout">Logout</a>
 	</div>

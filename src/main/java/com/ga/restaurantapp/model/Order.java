@@ -1,44 +1,42 @@
 package com.ga.restaurantapp.model;
 import java.sql.Date;
-import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.*;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 @Entity
 @Table(name="Orders")
 public class Order {
 	@Id
 	@GeneratedValue
+
 	private int orderId;
+	
 	private Date orderDate;
+	
 	private int quantity;
+	
 	private int customerID;
 	
-	
+	private String CustomerName;
+	@Column(length = 10)
+	private int CustomerPhone;
+
 	@ManyToOne
 	@JoinColumn(name="FK_CustomerId")
-	private User customerId;
+	private User customer;
 
-	
-	
 	@ManyToMany
-	@JoinTable(name = "meal_orders",
+	@JoinTable(name = "meal_order",
 				joinColumns = { @JoinColumn(name = "order_id") },
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
-	private Set<Meal> meals;
-	@Column(name="createdAt", nullable = false, updatable = false)
-	@CreationTimestamp
-	private LocalDateTime createAt;
-	@Column(name="updatedat", nullable = false, updatable = true)
-	@UpdateTimestamp
-	private LocalDateTime updateAt;
+	private Set<Meal> OrderedMeals;
+
 	public int getOrderId() {
 		return orderId;
 	}
 	public void setOrderId(int orderid) {
-		this.orderId = orderid;
+		orderId = orderid;
+
 	}
 	public Date getOrderDate() {
 		return orderDate;
@@ -58,49 +56,29 @@ public class Order {
 	public void setCustomerID(int customerID) {
 		this.customerID = customerID;
 	}
-	public User getCustomerId() {
-		return customerId;
+	public String getCustomerName() {
+		return CustomerName;
 	}
-	public void setCustomerId(User customerId) {
-		this.customerId = customerId;
+	public void setCustomerName(String customerName) {
+		CustomerName = customerName;
 	}
-	public Set<Meal> getMeals() {
-		return meals;
+	public int getCustomerPhone() {
+		return CustomerPhone;
 	}
-	public void setMeals(Set<Meal> meals) {
-		this.meals = meals;
+	public void setCustomerPhone(int customerPhone) {
+		CustomerPhone = customerPhone;
 	}
-	public LocalDateTime getCreateAt() {
-		return createAt;
+	public User getCustomer() {
+		return customer;
 	}
-	public void setCreateAt(LocalDateTime createAt) {
-		this.createAt = createAt;
+	public void setCustomer(User customer) {
+		this.customer = customer;
 	}
-	public LocalDateTime getUpdateAt() {
-		return updateAt;
+	public Set<Meal> getOrderedMeals() {
+		return OrderedMeals;
 	}
-	public void setUpdateAt(LocalDateTime updateAt) {
-		this.updateAt = updateAt;
+	public void setOrderedMeals(Set<Meal> orderedMeals) {
+		OrderedMeals = orderedMeals;
 	}
-	
-	
-	
-	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

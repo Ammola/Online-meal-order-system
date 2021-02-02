@@ -1,29 +1,36 @@
+<jsp:include page="../shared/_layout.jsp" />
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<table class="table table-striped">
 
-     <jsp:include page="../shared/_layout.jsp" />
-   <form action="${appName}cart/index" method="post">
+	<tr>
+		<th>Meal Name</th>
+		<th>Meal Description</th>
+		<th>Price</th>
+		<th>calories</th>
+		<th>Image</th>
+		
+	</tr>
+	<c:forEach items="${cart.getCartMeals()}" var="Meal">
 
-	<div>
+		<tr>
+			<td><a href="${appName}meal/detail?id=${Meal.mealId}">${Meal.mealName}</a></td>
+			<td>${Meal.description}</td>
+			<td>${Meal.mealPrice}</td>
+			<td>${Meal.calories}</td>
+			<td><img alt="" src="${Meal.mealImg}" width=80px height=80px></td>
 
-		<label>MealID</label> <input type="text" name="mealId">
+			<%
+			 if (session.getAttribute("user") != null) {
+			%>
+			<td><a href="${appName}cart/edit?id=${Meal.mealId}">Edit</a> | <a
+				href="${appName}cart/delete?id=${Meal.mealId}">Delete</a></td>
+			<%
+			}
+			%>
 
-	</div>
-	<div>
-		<label>mealName</label> <input type="text" name="customerId">
-	</div>
-	<div>
+		</tr>
+	</c:forEach>	
+</table>
 
-		<label>mealPrice</label> <input type="text" name="mealPrice">
-	</div>
-	<div>
-		<label>mealImg</label> <input type="text" name="mealImg">
-	</div>
-	<div>
-		<label>Quantity </label> <input type="text" name="quantity">
-	</div>
-	
-	<div>
-		<label>OrderDate</label> <input type="date" name="orderDate">
-	</div>
-	
-	<button type="submit">checkout</button>
-	</form>
+<b>Total: ${cart.getTotal()}</b>
+<a class="btn btn-primary" role="button" href="${appName}order/add?id=${cart.getId()}">Checkout</a>
