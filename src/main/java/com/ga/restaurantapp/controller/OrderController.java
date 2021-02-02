@@ -52,49 +52,6 @@ public class OrderController {
 	public String addOrder(Order order) {
 		dao.save(order);
 		
-<<<<<<< HEAD
-	}
-	
-	@GetMapping("/order/index")
-	public ModelAndView getAuthor() {
-		var it = dao.findAll();
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("order/index");
-		mv.addObject("orders", it);
-		HomeController hc = new HomeController();
-		hc.setAppName(mv, env);
-		return mv;
-	}
-	@GetMapping("/order/detail")
-	public ModelAndView orderDetails(@RequestParam int id) {
-		System.out.println(id);
-		Order order = dao.findById(id);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("order/detail");
-		mv.addObject("order", order);
-		HomeController hc = new HomeController();
-		hc.setAppName(mv, env);
-		return mv;
-	}
-	@GetMapping("/order/edit")
-	public ModelAndView editOrder(@RequestParam int id) {
-		System.out.println(id);
-		Order order = dao.findById(id);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("order/edit");
-		mv.addObject("order", order);
-		HomeController hc = new HomeController();
-		hc.setAppName(mv, env);
-		return mv;
-	}
-	@GetMapping("/order/delete")
-	public String deleteOrder(@RequestParam int id) {
-		dao.deleteById(id);
-
-		return "redirect:/order/index";
-	}
-}
-=======
 		return "redirect:/order/index";
 	}
 	
@@ -192,4 +149,3 @@ public class OrderController {
 
 }
 
->>>>>>> Ibrahim-dev
