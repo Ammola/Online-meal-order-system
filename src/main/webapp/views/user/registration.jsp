@@ -93,7 +93,7 @@
 						</div>
 					</div>
 				</div>
-				<button type="submit" onclick="matchPassword()" class="btnSubmit"
+				<button type="submit" onclick="matchPassword()" class="btn btn-warning"
 					id="submit">Sign Up</button>
 			</div>
 		</div>

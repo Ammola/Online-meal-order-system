@@ -52,11 +52,11 @@ if (session.getAttribute("user") != null) {
 	</table>
 
 		<form action="${appName}user/edit-profile" method="get" style="display: inline-block;">
-			<button type="submit" class="btn btn-info btn-rounded">Edit Profile</button>
+			<button type="submit" class="btn btn-warning">Edit Profile</button>
 		</form>
 	
 		<form action="${appName}user/edit-password" method="get" style="display: inline-block;">
-			<button type="submit" class="btn btn-info btn-rounded">Change Password</button>
+			<button type="submit" class="btn btn-warning">Change Password</button>
 		</form>
 
 </div>
