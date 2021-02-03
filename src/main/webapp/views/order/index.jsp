@@ -25,5 +25,5 @@
 </table>
 
 <%
-} else { %><br><br><div class="alert alert-primary" role="alert">You don not have orders!!</div> <% } }%>
+} else { %><br><br><div class="alert alert-primary" role="alert">You do not have orders yet!!</div> <% } }%>
 
