@@ -9,16 +9,17 @@
 	<tr>
 	    <th>Order ID</th>
 	    <th>Order Date</th>
+	    <th>Order Details</th>
 	</tr>
 	  
 	  <!-- loop in orders -->
 	<c:forEach items="${user.getOrders()}" var="order">
 	<tr>
-		<td><a href="${appName}order/detail?id=${order.id}">
+		<td>${order.orderId}</td>
+		<td>${order.createAt}</td>
+		<td><a href="${appName}order/detail?id=${order.orderId}">
 		Order details</a></td>
 		
-		<td>${order.id}</td>
-		<td>${order.createAt}</td>
 	</tr>
 	</c:forEach>
 </table>
