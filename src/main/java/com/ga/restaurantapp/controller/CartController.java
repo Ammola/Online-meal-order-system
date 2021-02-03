@@ -123,11 +123,11 @@ public class CartController {
 							Meal meal = mealDao.findById(id);
 							System.out.println("meal id "+id);
 							System.out.println("cart id "+cart.getId());
-							cart.setTotal(cart.getTotal() - meal.getMealPrice());
 							//cart.setCartMeals(cartMeals);
 							System.out.println(cart);
 							cartDao.deleteByMealIdAndCartId(id, cart.getId());
 							cart = cartDao.findById(cart.getId());
+							cart.setTotal(cart.getTotal() - meal.getMealPrice());
 							cartDao.save(cart);
 							
 							/*
