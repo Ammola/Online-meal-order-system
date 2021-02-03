@@ -14,5 +14,9 @@ public interface CartDao extends CrudRepository<Cart, Integer> {
 	@Modifying
 	@Query(value = "DELETE FROM meal_cart WHERE cart_id =:cart_id AND meal_id =:meal_id", nativeQuery = true)
 	void deleteByMealIdAndCartId(@Param("meal_id") int mealId, @Param("cart_id") int cartId);
+	
+	@Modifying
+	@Query(value = "DELETE FROM meal_cart WHERE cart_id =:cart_id", nativeQuery = true)
+	void deleteByCartId(@Param("cart_id") int cartId);
 
 }

@@ -2,6 +2,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <table class="table table-striped">
 
+            <% 
+            if (session.getAttribute("user") != null) {
+			
+			if ((int) session.getAttribute("cartSize") != 0) { %>
+			
+
 	<tr>
 		<th>Meal Name</th>
 		<th>Meal Description</th>
@@ -19,18 +25,19 @@
 			<td>${Meal.calories}</td>
 			<td><img alt="" src="${Meal.mealImg}" width=80px height=80px></td>
 
-			<%
-			 if (session.getAttribute("user") != null) {
-			%>
+			
 			<td><a href="${appName}cart/edit?id=${Meal.mealId}">Edit</a> | <a
 				href="${appName}cart/delete?id=${Meal.mealId}">Delete</a></td>
-			<%
-			}
-			%>
+			
 
 		</tr>
 	</c:forEach>	
 </table>
 
 <b>Total: ${cart.getTotal()}</b>
+
 <a class="btn btn-primary" role="button" href="${appName}order/add?id=${cart.getId()}">Checkout</a>
+
+<%
+} else { %><br><br><div class="alert alert-primary" role="alert">Your cart is empty!!</div> <% } }%>
+
