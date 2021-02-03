@@ -12,7 +12,6 @@
 	<div class="form-group">
 		<label>Description </label> <input type="text" name="description" value="${meal.description}" class="form-control">
 	</div>
-
 	<div class="form-group">
 		<label>Photo </label> <input type="text" name="mealImg" value="${meal.mealImg}" class="form-control">
 	</div>
