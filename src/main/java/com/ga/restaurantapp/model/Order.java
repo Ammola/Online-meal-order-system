@@ -1,5 +1,14 @@
 package com.ga.restaurantapp.model;
+<<<<<<< HEAD
+
+import java.sql.Date;
+=======
 import java.time.LocalDateTime;
+<<<<<<< HEAD
+>>>>>>> 3998b7c00df8fd3c58070cfd13d8bca15945ecfe
+=======
+>>>>>>> fb4de4dc8a9ee9c157eee9e308114cd91ac2e9e9
+>>>>>>> master
 import java.util.Set;
 import javax.persistence.*;
 
@@ -101,6 +110,18 @@ public class Order {
 	public void setOrderedMeals(Set<Meal> orderedMeals) {
 		OrderedMeals = orderedMeals;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+	
+>>>>>>> 3998b7c00df8fd3c58070cfd13d8bca15945ecfe
+=======
+	
+}
+=======
 
 }
+>>>>>>> master
 	
+>>>>>>> fb4de4dc8a9ee9c157eee9e308114cd91ac2e9e9
