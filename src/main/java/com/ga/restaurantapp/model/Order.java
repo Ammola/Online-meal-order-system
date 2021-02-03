@@ -1,5 +1,7 @@
 package com.ga.restaurantapp.model;
-import java.time.LocalDateTime;
+
+
+import java.sql.Date;
 import java.util.Set;
 import javax.persistence.*;
 
