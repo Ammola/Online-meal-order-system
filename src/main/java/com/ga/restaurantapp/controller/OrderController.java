@@ -59,11 +59,15 @@ public class OrderController {
 					Order order = new Order();
 					User user = (User) session.getAttribute("user");
 					Cart cart = user.getCart();
+					cart = cartDao.findById(cart.getId());
 					
 					order.setOrderDate(order.getCreateAt());
 					order.setCustomerName(user.getFirstName()+" "+user.getLastName());
 					order.setTotal(cart.getTotal());
 					order.setCustomer(user);
+					
+					System.out.println("cart total "+cart.getTotal());
+					System.out.println("order total "+order.getTotal());
 					
 					orderDao.save(order);
 					cartDao.deleteByCartId(cart.getId());
