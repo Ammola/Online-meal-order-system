@@ -125,9 +125,6 @@ public class UserController {
 					  
 					  session.setAttribute("message", "you are logged in successfully");
 					  
-					  System.out.println("is password matched?");
-					  System.out.println(bCrypt.matches(password, matchedUser.getPassword()));
-					  
 					  return "redirect:/";
 					 
 				 }

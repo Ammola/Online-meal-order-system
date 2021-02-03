@@ -2,6 +2,7 @@ package com.ga.restaurantapp.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ga.restaurantapp.dao.CartDao;
 import com.ga.restaurantapp.dao.OrderDao;
 import com.ga.restaurantapp.dao.UserDao;
 import com.ga.restaurantapp.model.Cart;
@@ -35,9 +37,13 @@ public class OrderController {
 	private OrderDao orderDao;
 	
 	@Autowired
+	private CartDao cartDao;
+	
+	@Autowired
 	private UserDao userDao;
 	
 	// HTTP GET REQUEST - Meal Delete
+	            @Transactional
 				@GetMapping("/order/add")
 				public String addOrder(@RequestParam int id) {
 					
@@ -51,14 +57,18 @@ public class OrderController {
 					
 					//Meal meal = mealDao.findById(id);
 					Order order = new Order();
-					Cart cart = (Cart) session.getAttribute("userCart");
 					User user = (User) session.getAttribute("user");
-				
+					Cart cart = user.getCart();
+					
 					order.setOrderDate(order.getCreateAt());
 					order.setCustomerName(user.getFirstName()+" "+user.getLastName());
 					order.setTotal(cart.getTotal());
 					
 					orderDao.save(order);
+					cartDao.deleteByCartId(cart.getId());
+					cart = cartDao.findById(cart.getId());
+					cart.setTotal(0);
+					cartDao.save(cart);
 
 					return "redirect:/order/detail?id="+order.getOrderId();
 				}
@@ -79,6 +89,8 @@ public class OrderController {
 					return mv;
 					
 				}
+				
+			
 	
 	
 				/*

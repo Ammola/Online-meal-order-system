@@ -41,28 +41,34 @@ public class CartController {
 	@Autowired
 	private UserController uc;
 	
-	Set<Meal> cartMeals = new HashSet<Meal>();
+	@GetMapping("/cart/add")
+	public String addCart(@RequestParam int id) {
+		
+		HttpSession session = request.getSession();
+		
+		Set<Meal> cartMeals = new HashSet<Meal>();
+		
+		// If the user is not logged in
+		if(!uc.isUserLoggedIn()) {
+				return "redirect:/";
+		// If the user role is "user" do not give permission for delete		
+		} 
+		
+		Meal meal = mealDao.findById(id);
+		User user = (User) session.getAttribute("user");
+		Cart cart = user.getCart();
+		cart = cartDao.findById(cart.getId());
+		cartMeals = cart.getCartMeals();
+		cartMeals.add(meal);
+		cart.setTotal(cart.getTotal()+meal.getMealPrice());
+		cart.setCartMeals(cartMeals);
+		cartDao.save(cart);
+		
+		System.out.println("cart.getCartMeals()   "+cart.getCartMeals().size());
+		System.out.println("cartMeals   "+cartMeals.size());
 	
-	// HTTP GET REQUEST - Meal Delete
-			@GetMapping("/cart/add")
-			public String addCart(@RequestParam int id) {
-				
-				HttpSession session = request.getSession();
-				
-				// If the user is not logged in
-				if(!uc.isUserLoggedIn()) {
-						return "redirect:/";
-				// If the user role is "user" do not give permission for delete		
-				} 
-				
-				Meal meal = mealDao.findById(id);
-				Cart cart = (Cart) session.getAttribute("userCart");
-				cartMeals.add(meal);
-				cart.setTotal(cart.getTotal()+meal.getMealPrice());
-				cart.setCartMeals(cartMeals);
-				cartDao.save(cart);
-				return "redirect:/meal/index";
-			}
+		return "redirect:/meal/index";
+	}
 			
 			
 			// HTTP GET REQUEST - Author Detail
@@ -95,6 +101,9 @@ public class CartController {
 				
 			HomeController hc = new HomeController();
 			hc.setAppName(mv, env);
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("cartSize", cart.getCartMeals().size());
 				
 			if(!uc.isUserLoggedIn())
 				{
@@ -105,64 +114,68 @@ public class CartController {
 			}
 			
 			// HTTP GET REQUEST - Meal Delete
-			@Transactional
-			@GetMapping("/cart/delete")
-			public String deleteMeal(@RequestParam int id) {
-								
-				HttpSession session = request.getSession();
-				Cart cart = (Cart) session.getAttribute("userCart");
-				Meal meal = mealDao.findById(id);
-				cart.setTotal(cart.getTotal() - meal.getMealPrice());
-				cart.setCartMeals(cartMeals);
-				cartDao.save(cart);
-				cartDao.deleteByMealIdAndCartId(id, cart.getId());
-				
-				/*
-				 * Meal meal = mealDao.findById(id);
-				 * 
-				 * // cart.cartMeals.remove();
-				 * 
-				 * Set<Meal> meals = cart.getCartMeals();
-				 * 
-				 * meals.remove(meal);
-				 * 
-				 * cart.setCartMeals(meals);
-				 * 
-				 * cartDao.save(cart);
-				 */
-				 
-				 //int oldId = id;
-				 
-				 // mealDao.deleteById(id); mealDao.save(meal);
-				  
-				 // meal.setMealId(oldId);
-				  
-				 // System.out.println("meal Id "+meal.getMealId());
-				 			
-				
-				//meals = cart.getCartMeals();
-				
-				//System.out.println(meals);
-				
-				/*
-				 * if(meals.remove(meal)) { mv.addObject("message",
-				 * "The meal was removed successfully from the cart");
-				 * System.out.println("meal removed"); System.out.println(meal.getMealName()); }
-				 */
-				
-				//System.out.println(meal.getMealName());
-				//cart.setCartMeals(meals);
-				
-				// If the user is not logged in
-				if(!uc.isUserLoggedIn()) {
-					return "redirect:/";
-				// If the user role is "user" do not give permission for delete		
-				} 
-				
-				session.setAttribute("message", "The meal was removed successfully from the cart");
-				return "redirect:/cart/index?id="+cart.getId();
-				
-			}
+						@Transactional
+						@GetMapping("/cart/delete")
+						public String deleteMeal(@RequestParam int id) {
+							HttpSession session = request.getSession();
+							User user = (User) session.getAttribute("user");
+							Cart cart = user.getCart();
+							Meal meal = mealDao.findById(id);
+							System.out.println("meal id "+id);
+							System.out.println("cart id "+cart.getId());
+							cart.setTotal(cart.getTotal() - meal.getMealPrice());
+							//cart.setCartMeals(cartMeals);
+							System.out.println(cart);
+							cartDao.deleteByMealIdAndCartId(id, cart.getId());
+							cart = cartDao.findById(cart.getId());
+							cartDao.save(cart);
+							
+							/*
+							 * Meal meal = mealDao.findById(id);
+							 * 
+							 * // cart.cartMeals.remove();
+							 * 
+							 * Set<Meal> meals = cart.getCartMeals();
+							 * 
+							 * meals.remove(meal);
+							 * 
+							 * cart.setCartMeals(meals);
+							 * 
+							 * cartDao.save(cart);
+							 */
+							 
+							 //int oldId = id;
+							 
+							 // mealDao.deleteById(id); mealDao.save(meal);
+							  
+							 // meal.setMealId(oldId);
+							  
+							 // System.out.println("meal Id "+meal.getMealId());
+							 			
+							
+							//meals = cart.getCartMeals();
+							
+							//System.out.println(meals);
+							
+							/*
+							 * if(meals.remove(meal)) { mv.addObject("message",
+							 * "The meal was removed successfully from the cart");
+							 * System.out.println("meal removed"); System.out.println(meal.getMealName()); }
+							 */
+							
+							//System.out.println(meal.getMealName());
+							//cart.setCartMeals(meals);
+							
+							// If the user is not logged in
+							if(!uc.isUserLoggedIn()) {
+								return "redirect:/";
+							// If the user role is "user" do not give permission for delete		
+							} 
+							
+							session.setAttribute("message", "The meal was removed successfully from the cart");
+							return "redirect:/cart/index?id="+cart.getId();
+							
+						}
 			
 
 }
