@@ -1,38 +1,29 @@
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../shared/_layout.jsp" />
-<table>
-	<tr>
-	   <th>customerName</th>
-		<th>customerId</th>
-		<th>customerPhone</th>
-		<th>Order ID </th>
-		<th> Quantity </th>
-		<th> Price </th>
-		<th> Date </th>
+<table class="table table-striped">
 
-		<th> Action </th>
+ <% 
+            if (session.getAttribute("user") != null) {
+			
+			if ((int) session.getAttribute("cartSize") != 0) { %>
+	<tr>
+	    <th>Order ID</th>
+	    <th>Order Date</th>
+	    <th>Order Details</th>
 	</tr>
 	  
 	  <!-- loop in orders -->
-	<c:forEach items="${orders}" var="order">
+	<c:forEach items="${user.getOrders()}" var="order">
 	<tr>
 
-		 <!-- In saad code Id was hidden not in a Table I mean -->
-
-		<td><a href="${appName}order/detail?customerId=${order.customerName}">
-		${order.customerId}</a></td>
-		
-		<td><a href="">${  order.customerPhone}</a></td>
-		<td><a href="">${  order.orderid}</a></td>
-		<td><a href="">${  order.quantity}</a></td>
-		<td><a href="">${  order.price}</a></td>
-		<td><a href="">${  order.orderDate}</a></td>
-	
-		<td>
-		<a href="${appName}order/detail?customerId=${order.orderid}">Edit</a>
-		<a href="${appName}order/detail?customerId=${order.orderid}">Delete</a>
-		</td>
+		<td>${order.orderId}</td>
+		<td>${order.createAt}</td>
+		<td><a href="${appName}order/detail?id=${order.orderId}">
+		Order details</a></td>
 	</tr>
 	</c:forEach>
 </table>
+
+<%
+} else { %><br><br><div class="alert alert-primary" role="alert">You don not have orders!!</div> <% } }%>
+

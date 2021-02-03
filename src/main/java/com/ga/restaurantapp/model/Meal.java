@@ -31,9 +31,12 @@ public class Meal {
 	@Column(name="createdAt", nullable = false, updatable = false)
 	@CreationTimestamp
 	private LocalDateTime createAt;
+	
 	@Column(name="updatedat", nullable = false, updatable = true)
 	@UpdateTimestamp
 	private LocalDateTime updateAt;
+	
+	
 	public int getMealId() {
 		return mealId;
 	}
