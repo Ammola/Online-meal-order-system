@@ -15,11 +15,11 @@
 	  <!-- loop in orders -->
 	<c:forEach items="${user.getOrders()}" var="order">
 	<tr>
+
 		<td>${order.orderId}</td>
 		<td>${order.createAt}</td>
 		<td><a href="${appName}order/detail?id=${order.orderId}">
 		Order details</a></td>
-		
 	</tr>
 	</c:forEach>
 </table>

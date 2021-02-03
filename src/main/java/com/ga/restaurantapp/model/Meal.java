@@ -15,6 +15,7 @@ public class Meal {
 	private int mealPrice;
 	private int calories;
 	private String description;
+
 	private String mealImg;
 
 	@ManyToOne
@@ -60,23 +61,27 @@ public class Meal {
 	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
 	}
+	
 	public int getCalories() {
 		return calories;
 	}
 	public void setCalories(int calories) {
 		this.calories = calories;
 	}
+	
 	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
+
 	}
 	public String getMealImg() {
 		return mealImg;
 	}
 	public void setMealImg(String mealImg) {
 		this.mealImg = mealImg;
+
 	}
 	public User getAdmin() {
 		return admin;
