@@ -3,10 +3,6 @@
 <form action="${appName}user/edit-profile" method="post">
 	<div class="container register-form">
 		<div class="form">
-			<!-- <div class="note">
-				<p>This is a simpleRegister Form made using Boostrap.</p>
-			</div> -->
-
 			<div class="form-content">
 				<div class="row">
 					<div class="col-md-6">
@@ -76,7 +72,7 @@
 						</div>
 					</div>
 				</div>
-				<button type="submit" class="btnSubmit">Save</button>
+				<button type="submit" class="btn btn-warning">Save</button>
 			</div>
 		</div>
 

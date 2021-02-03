@@ -129,46 +129,10 @@ public class CartController {
 							cart.setTotal(cart.getTotal() - meal.getMealPrice());
 							cartDao.save(cart);
 							
-							/*
-							 * Meal meal = mealDao.findById(id);
-							 * 
-							 * // cart.cartMeals.remove();
-							 * 
-							 * Set<Meal> meals = cart.getCartMeals();
-							 * 
-							 * meals.remove(meal);
-							 * 
-							 * cart.setCartMeals(meals);
-							 * 
-							 * cartDao.save(cart);
-							 */
-							 
-							 //int oldId = id;
-							 
-							 // mealDao.deleteById(id); mealDao.save(meal);
-							  
-							 // meal.setMealId(oldId);
-							  
-							 // System.out.println("meal Id "+meal.getMealId());
-							 			
-							
-							//meals = cart.getCartMeals();
-							
-							//System.out.println(meals);
-							
-							/*
-							 * if(meals.remove(meal)) { mv.addObject("message",
-							 * "The meal was removed successfully from the cart");
-							 * System.out.println("meal removed"); System.out.println(meal.getMealName()); }
-							 */
-							
-							//System.out.println(meal.getMealName());
-							//cart.setCartMeals(meals);
-							
-							// If the user is not logged in
+							// If the user role is "user" do not give permission for delete	
 							if(!uc.isUserLoggedIn()) {
 								return "redirect:/";
-							// If the user role is "user" do not give permission for delete		
+								
 							} 
 							
 							session.setAttribute("message", "The meal was removed successfully from the cart");

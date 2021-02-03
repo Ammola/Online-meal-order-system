@@ -25,7 +25,7 @@
 			</div>
 
 			<br>
-			<button type="submit" class="btnSubmit">Log In</button>
+			<button type="submit" class="btn btn-warning">Log In</button>
 		</div>
 	</div>
 	</div>
