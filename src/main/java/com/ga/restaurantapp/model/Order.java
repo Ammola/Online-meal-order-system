@@ -20,6 +20,7 @@ public class Order {
 
 	@Id
 	@GeneratedValue
+
 	private int orderId;
 	
 	private String customerName;
@@ -27,6 +28,7 @@ public class Order {
 	
 	private int total;
 	
+
 	@Column(length = 10)
 	private int customerPhone;
 	
@@ -38,12 +40,13 @@ public class Order {
 	@JoinColumn(name="FK_CustomerId")
 	private User customer;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name = "meal_order",
-			   joinColumns = { @JoinColumn(name = "order_id") },
-			   inverseJoinColumns = { @JoinColumn(name = "meal_id")})
-	private Set<Meal> OrderedMeals;
+				joinColumns = { @JoinColumn(name = "order_id") },
+				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
 
+
+	private Set<Meal> OrderedMeals;
 	public int getOrderId() {
 		return orderId;
 	}
@@ -99,10 +102,5 @@ public class Order {
 		OrderedMeals = orderedMeals;
 	}
 
-	
-	
 }
-
-
-
 	
