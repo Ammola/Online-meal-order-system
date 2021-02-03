@@ -56,7 +56,8 @@ document.getElementById("demo").innerHTML = 5 + 6;
 		<a href="${appName}user/profile">Profile</a> | 
 		<a href="${appName}user/logout">Logout</a>
 	</div>
-	
+
+
 	<%
 	} else {
 	%>
@@ -71,6 +72,8 @@ document.getElementById("demo").innerHTML = 5 + 6;
 	<%
 	}
 	%>
+
+
 	<c:if test="${message != null}">
 		<div class="alert alert-success fade show" role="alert">
 			${message}</div>

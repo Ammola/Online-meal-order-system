@@ -2,7 +2,6 @@ package com.ga.restaurantapp.controller;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
@@ -17,9 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ga.restaurantapp.dao.CartDao;
 import com.ga.restaurantapp.dao.MealDao;
 import com.ga.restaurantapp.dao.UserDao;
-import com.ga.restaurantapp.model.Cart;
-import com.ga.restaurantapp.model.Meal;
-import com.ga.restaurantapp.model.User;
+import com.ga.restaurantapp.model.*;
+//import com.ga.restaurantapp.model.Meal;
+//import com.ga.restaurantapp.model.User;
 
 @Controller
 public class CartController {
@@ -27,7 +26,7 @@ public class CartController {
 	private Environment env;
 	
 	@Autowired
-	private UserDao dao;
+	private UserDao userdao;
 	
 	@Autowired
 	private MealDao mealDao;
