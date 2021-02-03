@@ -14,12 +14,12 @@ public class Order {
 	private Date orderDate;
 	private int quantity;	
 	private int customerID;
-	private String CustomerName;
+	private String customerName;
 	@Column(length = 10)
-	private int CustomerPhone;
+	private int customerPhone;
 
 	@ManyToOne
-	@JoinColumn(name="FK_CustomerId")
+	@JoinColumn(name="FK_customerId")
 	private User customer;
 	@ManyToMany
 	@JoinTable(name = "meal_order",
@@ -53,16 +53,16 @@ public class Order {
 		this.customerID = customerID;
 	}
 	public String getCustomerName() {
-		return CustomerName;
+		return customerName;
 	}
 	public void setCustomerName(String customerName) {
-		CustomerName = customerName;
+		customerName = customerName;
 	}
 	public int getCustomerPhone() {
-		return CustomerPhone;
+		return customerPhone;
 	}
 	public void setCustomerPhone(int customerPhone) {
-		CustomerPhone = customerPhone;
+		customerPhone = customerPhone;
 	}
 	public User getCustomer() {
 		return customer;
