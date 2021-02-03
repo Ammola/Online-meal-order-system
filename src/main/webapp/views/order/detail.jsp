@@ -6,7 +6,6 @@
 		<th>Customer's Name</th>
 		<th>Total</th>
 		<th>Order Date</th>
-		<th>quantity</th>
 	</tr>
 
 	<tr>
