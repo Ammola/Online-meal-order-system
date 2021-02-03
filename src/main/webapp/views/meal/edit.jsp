@@ -12,6 +12,12 @@
 	<div class="form-group">
 		<label>Description </label> <input type="text" name="description" value="${meal.description}" class="form-control">
 	</div>
+	<div class="form-group">
+		<label>Description </label> <input type="text" name="description" value="${meal.description}" class="form-control">
+	</div>
+	<div class="form-group">
+		<label>Image </label> <input type="text" name="mealImg" value="${meal.mealImg} class="form-control">
+	</div>
 	     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input name="mealId" type="hidden" value="${meal.mealId}">
 	<button type="submit">Submit</button>
