@@ -1,4 +1,5 @@
 package com.ga.restaurantapp.model;
+
 import java.sql.Date;
 import java.util.Set;
 import javax.persistence.*;

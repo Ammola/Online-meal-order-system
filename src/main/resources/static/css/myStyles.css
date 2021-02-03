@@ -1,6 +1,10 @@
 @charset "ISO-8859-1";
 
 body {
+	background-image: url("../images/back.jpg");
+	background-position: center; 
+	background-repeat: no-repeat; 
+	background-size: cover;
 	padding: 20px;
 }
 
@@ -11,19 +15,56 @@ body {
     text-overflow: ellipsis;
     float:left;     
     }
+    
+    h5{
+    color: #FFF200;
+    }
+    
+    
 
 .homepage {
+	background-image: url("../images/home.jpg");
 	padding: 50px;
-	background-image: url("../images/banner.png");
 	background-position: center; 
 	background-repeat: no-repeat; 
 	background-size: cover;
 	height: 500px;
 }
 
+.home-nav{
+	color: #FFF200;
+}
+
+.home-nav a{
+color: #fff;
+ text-decoration: none;
+}
+
+.home-nav a:hover{
+		color: #FFF200;
+}
+
+
+.right-nav{
+	color:red;
+	text-align: right;
+	 float: right;
+}
+
+.right-nav a{
+	color: #FFF200;
+	border-style:solid ;
+    border-width: 2px;
+     text-decoration: none;
+}
+.right-nav a:hover{
+	color:white;
+	
+}
+
 .banner {
 	padding: 50px;
-	background-image: url("../images/banner.png");
+	background-image: url("../images/sign.jpg");
 	background-position: center; 
 	background-repeat: no-repeat; 
 	background-size: cover;
@@ -42,6 +83,12 @@ padding-left: 400px;
 
 #inputStreet {
   width: 100%;
+}
+.form{
+	background-image: url("../images/sign.jpg");
+	background-position: center; 
+	background-repeat: no-repeat; 
+	background-size: cover;
 }
 
 .note
@@ -78,4 +125,3 @@ padding-left: 400px;
 .table-striped>tbody>tr:nth-child(odd)>th {
    background-color: #e8e8e8;
  }
-
