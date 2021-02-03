@@ -22,8 +22,6 @@ public class Cart {
 	
 	private int total;
 	
-	private int quantity; 
-	
 	@OneToOne(mappedBy ="cart")
 	private User user;
 
@@ -47,14 +45,6 @@ public class Cart {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
 	}
 
 	public int getTotal() {

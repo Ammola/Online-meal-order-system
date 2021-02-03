@@ -6,14 +6,12 @@
 	<div class="form-group">
 		<label>Price </label> <input type="text" name="mealPrice"  value="${meal.mealPrice}" class="form-control">
 	</div>
-	
 	<div class="form-group">
 		<label>Calories </label> <input type="text" name="calories" value="${meal.calories}"  class="form-control">
 	</div>
 	<div class="form-group">
 		<label>Description </label> <input type="text" name="description" value="${meal.description}" class="form-control">
 	</div>
-	
 	     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input name="mealId" type="hidden" value="${meal.mealId}">
 	<button type="submit">Submit</button>

@@ -49,7 +49,7 @@ document.getElementById("demo").innerHTML = 5 + 6;
 	<%
 	}
 	%>
-	<a href="${appName}order/index">My Orders</a>
+	<a href="${appName}order/get-index">My Orders</a>
 
 
 	<div style="text-align: right; float: right;">

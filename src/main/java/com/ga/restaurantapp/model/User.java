@@ -32,12 +32,10 @@ public class User {
 	    @JoinColumn(name = "cartId", referencedColumnName = "id")
 	    private Cart cart;
 
-		
 		@OneToMany(mappedBy="admin")
 		private Set<Meal> meals;
 
-		
-		@OneToMany(mappedBy="customer")
+		@OneToMany(fetch = FetchType.EAGER, mappedBy="customer", cascade = CascadeType.ALL)
 		private Set<Order> orders;
 		
 		@Column(name="createdAt", nullable = false, updatable = false)
@@ -192,6 +190,5 @@ public class User {
 		public void setCart(Cart cart) {
 			this.cart = cart;
 		}
-
 		
 }

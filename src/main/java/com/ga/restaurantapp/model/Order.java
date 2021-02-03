@@ -1,27 +1,46 @@
 package com.ga.restaurantapp.model;
+<<<<<<< HEAD
 
 import java.sql.Date;
+=======
+import java.time.LocalDateTime;
+>>>>>>> fb4de4dc8a9ee9c157eee9e308114cd91ac2e9e9
 import java.util.Set;
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 
 @Entity
 @Table(name="Orders")
 public class Order {
+	
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
 	@Id
 	@GeneratedValue
 
 	private int orderId;
 	
-	private Date orderDate;
+	private String customerName;
+	private LocalDateTime orderDate;
 	
-	private int quantity;
+	private int total;
 	
-	private int customerID;
-	
-	private String CustomerName;
-	@Column(length = 10)
-	private int CustomerPhone;
 
+	@Column(length = 10)
+	private int customerPhone;
+	
+	@Column(name="createdAt", nullable = false, updatable = false)
+	@CreationTimestamp
+	private LocalDateTime createAt;
+		
 	@ManyToOne
 	@JoinColumn(name="FK_CustomerId")
 	private User customer;
@@ -30,56 +49,68 @@ public class Order {
 	@JoinTable(name = "meal_order",
 				joinColumns = { @JoinColumn(name = "order_id") },
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
-	private Set<Meal> OrderedMeals;
 
+
+	private Set<Meal> OrderedMeals;
 	public int getOrderId() {
 		return orderId;
 	}
-	public void setOrderId(int orderid) {
-		orderId = orderid;
 
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
-	public Date getOrderDate() {
+
+	public LocalDateTime getOrderDate() {
 		return orderDate;
 	}
-	public void setOrderDate(Date orderDate) {
+
+	public void setOrderDate(LocalDateTime orderDate) {
 		this.orderDate = orderDate;
 	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	public int getCustomerID() {
-		return customerID;
-	}
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
-	}
-	public String getCustomerName() {
-		return CustomerName;
-	}
-	public void setCustomerName(String customerName) {
-		CustomerName = customerName;
-	}
 	public int getCustomerPhone() {
-		return CustomerPhone;
+		return customerPhone;
 	}
+	
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
 	public void setCustomerPhone(int customerPhone) {
-		CustomerPhone = customerPhone;
+		this.customerPhone = customerPhone;
 	}
+
+	public LocalDateTime getCreateAt() {
+		return createAt;
+	}
+
+	public void setCreateAt(LocalDateTime createAt) {
+		this.createAt = createAt;
+	}
+
 	public User getCustomer() {
 		return customer;
 	}
+
 	public void setCustomer(User customer) {
 		this.customer = customer;
 	}
+
 	public Set<Meal> getOrderedMeals() {
 		return OrderedMeals;
 	}
+
 	public void setOrderedMeals(Set<Meal> orderedMeals) {
 		OrderedMeals = orderedMeals;
 	}
+<<<<<<< HEAD
 	
 }
+=======
+
+}
+	
+>>>>>>> fb4de4dc8a9ee9c157eee9e308114cd91ac2e9e9
