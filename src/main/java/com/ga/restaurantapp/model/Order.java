@@ -4,7 +4,11 @@ package com.ga.restaurantapp.model;
 import java.sql.Date;
 =======
 import java.time.LocalDateTime;
+<<<<<<< HEAD
 >>>>>>> 3998b7c00df8fd3c58070cfd13d8bca15945ecfe
+=======
+>>>>>>> fb4de4dc8a9ee9c157eee9e308114cd91ac2e9e9
+>>>>>>> master
 import java.util.Set;
 import javax.persistence.*;
 
@@ -15,19 +19,27 @@ import org.hibernate.annotations.CreationTimestamp;
 @Table(name="Orders")
 public class Order {
 	
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
 	@Id
 	@GeneratedValue
 
-
-
-	private int orderId;	
-	private Date orderDate;
-	private int quantity;	
-	private int customerID;
-	private String CustomerName;
+	private int orderId;
+	
+	private String customerName;
+	private LocalDateTime orderDate;
+	
+	private int total;
+	
 
 	@Column(length = 10)
-	private int CustomerPhone;
+	private int customerPhone;
 	
 	@Column(name="createdAt", nullable = false, updatable = false)
 	@CreationTimestamp
@@ -59,25 +71,8 @@ public class Order {
 	public void setOrderDate(LocalDateTime orderDate) {
 		this.orderDate = orderDate;
 	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	public String getCustomerName() {
-		return customerName;
-	}
-
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
-
 	public int getCustomerPhone() {
-		return CustomerPhone;
+		return customerPhone;
 	}
 	
 	public int getTotal() {
@@ -89,7 +84,7 @@ public class Order {
 	}
 
 	public void setCustomerPhone(int customerPhone) {
-		CustomerPhone = customerPhone;
+		this.customerPhone = customerPhone;
 	}
 
 	public LocalDateTime getCreateAt() {
@@ -116,9 +111,17 @@ public class Order {
 		OrderedMeals = orderedMeals;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 	
 >>>>>>> 3998b7c00df8fd3c58070cfd13d8bca15945ecfe
+=======
 	
 }
+=======
+
+}
+>>>>>>> master
+	
+>>>>>>> fb4de4dc8a9ee9c157eee9e308114cd91ac2e9e9

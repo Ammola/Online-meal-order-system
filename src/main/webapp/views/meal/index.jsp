@@ -6,6 +6,7 @@
 	<tr>
 		<th>Meal Name</th>
 		<th>Meal Description</th>
+
 		<th>Price</th>
 		<th>calories</th>
 		<th>Image</th>
@@ -25,7 +26,6 @@
 			<td>${Meal.mealPrice}</td>
 			<td>${Meal.calories}</td>
 			<td><img alt="" src="${Meal.mealImg}" width=80px height=80px></td>
-
 			<%
 			if (session.getAttribute("userRole").equals("admin")) {
 			%>

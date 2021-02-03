@@ -11,7 +11,11 @@
 		<th> Price </th>
 		<th> Date </th>
 =======
+<<<<<<< HEAD
 >>>>>>> 3998b7c00df8fd3c58070cfd13d8bca15945ecfe
+=======
+>>>>>>> fb4de4dc8a9ee9c157eee9e308114cd91ac2e9e9
+>>>>>>> master
 
  <% 
             if (session.getAttribute("user") != null) {
@@ -27,7 +31,11 @@
 	<c:forEach items="${user.getOrders()}" var="order">
 	<tr>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> master
 
+<<<<<<< HEAD
 		 <!-- In rayan code Id was hidden not in a Table I mean -->
 		<td><a href="${appName}order/detail?id=${Order.orderName}">
 		${Order.orderId}</a></td>
@@ -49,8 +57,12 @@
 		<td>${order.createAt}</td>
 		<td><a href="${appName}order/detail?id=${order.orderId}">
 		Order details</a></td>
+<<<<<<< HEAD
 		
 >>>>>>> 3998b7c00df8fd3c58070cfd13d8bca15945ecfe
+=======
+>>>>>>> fb4de4dc8a9ee9c157eee9e308114cd91ac2e9e9
+>>>>>>> master
 	</tr>
 	</c:forEach>
 </table>

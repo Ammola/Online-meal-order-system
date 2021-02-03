@@ -2,7 +2,14 @@ package com.ga.restaurantapp.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+<<<<<<< HEAD
 import javax.transaction.Transactional;
+=======
+<<<<<<< HEAD
+=======
+import javax.transaction.Transactional;
+>>>>>>> fb4de4dc8a9ee9c157eee9e308114cd91ac2e9e9
+>>>>>>> master
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -33,6 +40,131 @@ public class OrderController {
 	@Autowired
 	HttpServletRequest request;
 	
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	// HTTP GET REQUEST - Order Add
+	@GetMapping("/order/add")
+	public ModelAndView addOrder() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("order/add");
+		
+		HomeController hc = new HomeController();
+		hc.setAppName(mv, env);
+		
+		// If the user is not logged in
+		if(!uc.isUserLoggedIn()) {
+			mv.setViewName("home/index");
+		}
+		
+		return mv;
+	}
+	
+	@Autowired
+	private OrderDao dao;
+	
+	// HTTP POST REQUEST - Order Add
+	@PostMapping("/order/add")
+	public String addOrder(Order order) {
+		dao.save(order);
+		
+		return "redirect:/order/index";
+	}
+	
+	// HTTP GET REQUEST - Order Index
+		@GetMapping("/order/index")
+		public ModelAndView getOrder() {
+			var it = dao.findAll();
+			
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("order/index");
+			mv.addObject("orders", it);
+			
+			HomeController hc = new HomeController();
+			hc.setAppName(mv, env);
+			
+			return mv;
+		}
+		
+		// HTTP GET REQUEST - Order Detail
+		@GetMapping("/order/detail")
+		public ModelAndView orderDetails(@RequestParam int id) {
+			System.out.println(id);
+			
+			Order order = dao.findById(id);
+			
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("order/detail");
+			mv.addObject("order", order);
+			
+			HomeController hc = new HomeController();
+			hc.setAppName(mv, env);
+			
+			return mv;
+			
+		}
+		
+		// HTTP GET REQUEST - Order Edit
+		@GetMapping("/order/edit")
+		public ModelAndView editOrder(@RequestParam int id) {
+			Order order = dao.findById(id);
+			
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("order/edit");
+			mv.addObject("order", order);
+			
+			HomeController hc = new HomeController();
+			hc.setAppName(mv, env);
+			
+			// If the user is not logged in
+					if(!uc.isUserLoggedIn()) {
+						mv.setViewName("home/index");
+					}
+			
+			return mv;
+		}
+		
+		// HTTP GET REQUEST - Order Delete
+		@GetMapping("/order/delete")
+		public String deleteOrder(@RequestParam int id) {
+			
+			HttpSession session = request.getSession();
+			
+			// If the user is not logged in
+			if(!uc.isUserLoggedIn()) {
+					return "redirect:/";
+			// If the user role is "user" do not give permission for delete		
+			} else if(session.getAttribute("userRole").equals("user")) {
+				return "redirect:/order/index";
+			}
+			
+			dao.deleteById(id);
+			return "redirect:/order/index";
+		}
+		 
+		@GetMapping("/order/confirm")
+		public ModelAndView cunOrder(Order order) {
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("order", order);
+			mv.setViewName("order/confirm");
+			
+			HomeController hc = new HomeController();
+			hc.setAppName(mv, env);
+			
+			// If the user is not logged in
+			if(!uc.isUserLoggedIn()) {
+				mv.setViewName("home/index");
+			}
+			
+			return mv;
+		}
+		
+		
+		
+		
+
+=======
+>>>>>>> master
 	@Autowired
 	private OrderDao orderDao;
 	
@@ -59,8 +191,9 @@ public class OrderController {
 					Order order = new Order();
 					User user = (User) session.getAttribute("user");
 					Cart cart = user.getCart();
+
 					cart = cartDao.findById(cart.getId());
-					
+
 					order.setOrderDate(order.getCreateAt());
 					order.setCustomerName(user.getFirstName()+" "+user.getLastName());
 					order.setTotal(cart.getTotal());
@@ -68,7 +201,7 @@ public class OrderController {
 					
 					System.out.println("cart total "+cart.getTotal());
 					System.out.println("order total "+order.getTotal());
-					
+
 					orderDao.save(order);
 					cartDao.deleteByCartId(cart.getId());
 					cart = cartDao.findById(cart.getId());
@@ -179,4 +312,10 @@ public class OrderController {
 				 * 
 				 * return "redirect:/order/index"; }
 				 */
+<<<<<<< HEAD
 }
+=======
+>>>>>>> fb4de4dc8a9ee9c157eee9e308114cd91ac2e9e9
+}
+
+>>>>>>> master
