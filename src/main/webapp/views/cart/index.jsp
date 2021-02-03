@@ -18,10 +18,11 @@ if ((int) session.getAttribute("cartSize") != 0) {
 </div>
 </c:forEach>
 </div>
-
-<b>Total: ${cart.getTotal()}</b>
-
-<a class="btn btn-primary" role="button" href="${appName}order/add?id=${cart.getId()}">Checkout</a>
+<br><br>
+<h5>
+<b>Total:</b> ${cart.getTotal()} SR
+<a class="btn btn-warning" role="button" href="${appName}order/add?id=${cart.getId()}">Checkout</a>
+</h5>
 
 <%
 } else { 

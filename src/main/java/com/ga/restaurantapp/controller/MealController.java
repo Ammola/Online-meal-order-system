@@ -36,6 +36,8 @@ public class MealController {
 		HomeController hc = new HomeController();
 		hc.setAppName(mv, env);
 		// If the user is not admin
+		session.setAttribute("message", "The meal was added successfully to the meanu!!");
+
 		if(!(session.getAttribute("userRole").equals("admin"))) {
 			mv.setViewName("home/index");
 		}
