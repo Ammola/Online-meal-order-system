@@ -1,10 +1,9 @@
 package com.ga.restaurantapp.model;
-<<<<<<< HEAD
+
 
 import java.sql.Date;
-=======
 import java.time.LocalDateTime;
->>>>>>> fb4de4dc8a9ee9c157eee9e308114cd91ac2e9e9
+
 import java.util.Set;
 import javax.persistence.*;
 
@@ -106,11 +105,9 @@ public class Order {
 	public void setOrderedMeals(Set<Meal> orderedMeals) {
 		OrderedMeals = orderedMeals;
 	}
-<<<<<<< HEAD
 	
 }
-=======
 
-}
-	
->>>>>>> fb4de4dc8a9ee9c157eee9e308114cd91ac2e9e9
+
+
+
