@@ -63,6 +63,7 @@ public class OrderController {
 					order.setOrderDate(order.getCreateAt());
 					order.setCustomerName(user.getFirstName()+" "+user.getLastName());
 					order.setTotal(cart.getTotal());
+					order.setCustomer(user);
 					
 					orderDao.save(order);
 					cartDao.deleteByCartId(cart.getId());
