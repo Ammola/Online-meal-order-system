@@ -24,7 +24,7 @@
 
 					</div>
 				</div>
-				<button type="submit" onclick="matchPassword()" class="btnSubmit" id="submit">Save
+				<button type="submit" onclick="matchPassword()" class="btn btn-warning" id="submit">Save
 					Password</button>
 			</div>
 		</div>

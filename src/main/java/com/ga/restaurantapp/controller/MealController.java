@@ -30,14 +30,13 @@ public class MealController {
 	// HTTP GET REQUEST - Meal Add
 	@GetMapping("/meal/add")
 	public ModelAndView addMeal() {
+		HttpSession session = request.getSession(); 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("meal/add");
-		
 		HomeController hc = new HomeController();
 		hc.setAppName(mv, env);
-		
-		// If the user is not logged in
-		if(!uc.isUserLoggedIn()) {
+		// If the user is not admin
+		if(!(session.getAttribute("userRole").equals("admin"))) {
 			mv.setViewName("home/index");
 		}
 		
@@ -59,11 +58,9 @@ public class MealController {
 		@GetMapping("/meal/index")
 		public ModelAndView getMeal() {
 			var it = dao.findAll();
-			
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("meal/index");
 			mv.addObject("meals", it);
-			
 			HomeController hc = new HomeController();
 			hc.setAppName(mv, env);
 			
@@ -74,34 +71,29 @@ public class MealController {
 		@GetMapping("/meal/detail")
 		public ModelAndView mealDetails(@RequestParam int id) {
 			System.out.println(id);
-			
 			Meal meal = dao.findById(id);
-			
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("meal/detail");
 			mv.addObject("meal", meal);
-			
 			HomeController hc = new HomeController();
 			hc.setAppName(mv, env);
 			
-			return mv;
-			
+			return mv;	
 		}
 		
 		// HTTP GET REQUEST - Meal Edit
 		@GetMapping("/meal/edit")
 		public ModelAndView editMeal(@RequestParam int id) {
+			HttpSession session = request.getSession(); 
 			Meal meal = dao.findById(id);
-			
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("meal/edit");
 			mv.addObject("meal", meal);
-			
 			HomeController hc = new HomeController();
 			hc.setAppName(mv, env);
 			
-			// If the user is not logged in
-					if(!uc.isUserLoggedIn()) {
+			// If the user is not admin
+					if(!(session.getAttribute("userRole").equals("admin"))) {
 						mv.setViewName("home/index");
 					}
 			
@@ -113,7 +105,6 @@ public class MealController {
 		public String deleteMeal(@RequestParam int id) {
 			
 			HttpSession session = request.getSession();
-			
 			// If the user is not logged in
 			if(!uc.isUserLoggedIn()) {
 					return "redirect:/";

@@ -20,7 +20,7 @@
  <% 
             if (session.getAttribute("user") != null) {
 			
-			if ((int) session.getAttribute("cartSize") != 0) { %>
+			if ((int) session.getAttribute("orderSize") != 0) { %>
 	<tr>
 	    <th>Order ID</th>
 	    <th>Order Date</th>
@@ -68,5 +68,5 @@
 </table>
 
 <%
-} else { %><br><br><div class="alert alert-primary" role="alert">You don not have orders!!</div> <% } }%>
+} else { %><br><br><div class="alert alert-primary" role="alert">You do not have orders yet!!</div> <% } }%>
 
