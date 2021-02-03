@@ -1,31 +1,28 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="../shared/_layout.jsp" />
-<table>
+<table class="table table-striped">
+
+ <% 
+            if (session.getAttribute("user") != null) {
+			
+			if ((int) session.getAttribute("cartSize") != 0) { %>
 	<tr>
 	    <th>Order ID</th>
-	    <th>Customer Name</th>
 	    <th>Order Date</th>
-		<th>Total</th>
 	</tr>
 	  
 	  <!-- loop in orders -->
-	<c:forEach items="${orders}" var="order">
+	<c:forEach items="${user.getOrders()}" var="order">
 	<tr>
-
-		 <!-- In rayan code Id was hidden not in a Table I mean -->
-		<td><a href="${appName}order/detail?customerId=${order.customerName}">
-		${order.customerId}</a></td>
+		<td><a href="${appName}order/detail?id=${order.id}">
+		Order details</a></td>
 		
-		<td><a href="">${  order.customerPhone}</a></td>
-		<td><a href="">${  order.orderid}</a></td>
-		<td><a href="">${  order.quantity}</a></td>
-		<td><a href="">${  order.price}</a></td>
-		<td><a href="">${  order.orderDate}</a></td>
-	
-		<td>
-		<a href="${appName}order/detail?customerId=${order.orderid}">Edit</a>
-		<a href="${appName}order/detail?customerId=${order.orderid}">Delete</a>
-		</td>
+		<td>${order.id}</td>
+		<td>${order.createAt}</td>
 	</tr>
 	</c:forEach>
 </table>
+
+<%
+} else { %><br><br><div class="alert alert-primary" role="alert">You don not have orders!!</div> <% } }%>
+

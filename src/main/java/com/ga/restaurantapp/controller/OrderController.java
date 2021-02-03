@@ -75,7 +75,7 @@ public class OrderController {
 				
 				// HTTP GET REQUEST - Author Detail
 				@GetMapping("/order/detail")
-				public ModelAndView orderIndex(@RequestParam int id) {
+				public ModelAndView orderDetail(@RequestParam int id) {
 					System.out.println(id);
 					ModelAndView mv = new ModelAndView();
 					//HttpSession session = request.getSession();
@@ -90,6 +90,46 @@ public class OrderController {
 					
 				}
 				
+				// HTTP GET REQUEST - Author Detail
+				@GetMapping("/order/get-index")
+				public String getOrderIndex() {
+					
+					HttpSession session = request.getSession();
+					
+					int userId = (int) session.getAttribute("userId");
+					
+					if(!uc.isUserLoggedIn())
+					{
+						return "redirect:/";
+					}
+				  
+				  return "redirect:/order/index?id="+userId;
+					
+				}
+				
+				// HTTP GET REQUEST - profile Edit
+				@GetMapping("/order/index")
+				public ModelAndView orderIndex(@RequestParam int id) {
+				
+				User user = userDao.findById(id);
+					
+				ModelAndView mv = new ModelAndView();
+				mv.setViewName("order/index");
+				mv.addObject("user", user);
+					
+				HomeController hc = new HomeController();
+				hc.setAppName(mv, env);
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("orderSize", user.getOrders().size());
+					
+				if(!uc.isUserLoggedIn())
+					{
+						mv.setViewName("home/index");
+					}
+					
+					return mv;
+				}
 			
 	
 	

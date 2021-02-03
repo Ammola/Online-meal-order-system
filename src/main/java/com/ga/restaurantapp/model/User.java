@@ -35,7 +35,7 @@ public class User {
 		@OneToMany(mappedBy="admin")
 		private Set<Meal> meals;
 
-		@OneToMany(mappedBy="customer")
+		@OneToMany(fetch = FetchType.EAGER, mappedBy="customer", cascade = CascadeType.ALL)
 		private Set<Order> orders;
 		
 		@Column(name="createdAt", nullable = false, updatable = false)

@@ -33,7 +33,7 @@ public class Order {
 	@JoinColumn(name="FK_CustomerId")
 	private User customer;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "meal_order",
 			   joinColumns = { @JoinColumn(name = "order_id") },
 			   inverseJoinColumns = { @JoinColumn(name = "meal_id")})
