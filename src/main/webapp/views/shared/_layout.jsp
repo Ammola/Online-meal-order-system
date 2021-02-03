@@ -1,3 +1,4 @@
+  
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -28,7 +29,7 @@ if (session.getAttribute("user") != null) {
 	<%
 	if (session.getAttribute("user") != null) {
 	%>
-
+     <div>
 	<a href="${appName}">Home</a> |
 	<a href="${appName}meal/index">Menu</a> 
 	<%
@@ -50,14 +51,20 @@ if (session.getAttribute("user") != null) {
 	<%
 	} else {
 	%>
-
+<div class = "home-nav">
 	<a href="${appName}">Home</a> |
 	<a href="${appName}meal/index">Meals</a>
+     
+      </div>
+</div>
 
-	<div style="text-align: right; float: right;">
+
+	<div class=right-nav>
 		<a href="${appName}user/login">Login<i class="fa fa-sign-in"></i></a> | <a
 			href="${appName}user/registration">Sign up</a>
 	</div>
+	
+	
 	<%
 	}
 	%>

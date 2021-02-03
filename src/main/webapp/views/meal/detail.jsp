@@ -36,4 +36,6 @@
 		<td><img alt="" src="${meal.mealImg}" width=300px height=300px></td>
 	</tr>
 
+
 </table>
+

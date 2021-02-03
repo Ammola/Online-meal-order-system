@@ -6,7 +6,6 @@
 	<div class="form-group">
 		<label>Price </label> <input type="text" name="mealPrice"  value="${meal.mealPrice}" class="form-control">
 	</div>
-	
 	<div class="form-group">
 		<label>Calories </label> <input type="text" name="calories" value="${meal.calories}"  class="form-control">
 	</div>
@@ -17,7 +16,6 @@
 		<label>Photo </label> <input type="text" name="mealImg" value="${meal.mealImg}" class="form-control">
 	</div>
 	
-	   
 		<input name="mealId" type="hidden" value="${meal.mealId}">
 	<button type="submit" class="btn btn-warning">Save</button>
 </form>

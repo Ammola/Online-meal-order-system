@@ -1,8 +1,8 @@
 package com.ga.restaurantapp.model;
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.*;
-
 import org.hibernate.annotations.CreationTimestamp;
 
 
@@ -10,20 +10,27 @@ import org.hibernate.annotations.CreationTimestamp;
 @Table(name="Orders")
 public class Order {
 	
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
 	@Id
 	@GeneratedValue
+
 	private int orderId;
 	
-	private LocalDateTime orderDate;
-	
-	private int quantity;
-	
 	private String customerName;
+	private LocalDateTime orderDate;
 	
 	private int total;
 	
+
 	@Column(length = 10)
-	private int CustomerPhone;
+	private int customerPhone;
 	
 	@Column(name="createdAt", nullable = false, updatable = false)
 	@CreationTimestamp
@@ -33,12 +40,13 @@ public class Order {
 	@JoinColumn(name="FK_CustomerId")
 	private User customer;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name = "meal_order",
-			   joinColumns = { @JoinColumn(name = "order_id") },
-			   inverseJoinColumns = { @JoinColumn(name = "meal_id")})
-	private Set<Meal> OrderedMeals;
+				joinColumns = { @JoinColumn(name = "order_id") },
+				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
 
+
+	private Set<Meal> OrderedMeals;
 	public int getOrderId() {
 		return orderId;
 	}
@@ -54,25 +62,8 @@ public class Order {
 	public void setOrderDate(LocalDateTime orderDate) {
 		this.orderDate = orderDate;
 	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	public String getCustomerName() {
-		return customerName;
-	}
-
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
-
 	public int getCustomerPhone() {
-		return CustomerPhone;
+		return customerPhone;
 	}
 	
 	public int getTotal() {
@@ -84,7 +75,7 @@ public class Order {
 	}
 
 	public void setCustomerPhone(int customerPhone) {
-		CustomerPhone = customerPhone;
+		this.customerPhone = customerPhone;
 	}
 
 	public LocalDateTime getCreateAt() {
@@ -110,23 +101,4 @@ public class Order {
 	public void setOrderedMeals(Set<Meal> orderedMeals) {
 		OrderedMeals = orderedMeals;
 	}
-
-	
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
