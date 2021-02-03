@@ -9,11 +9,13 @@
 		<th>calories</th>
 		<th>Image</th>
 		<%
-		if (session.getAttribute("userRole").equals("admin")) {
+	    if (session.getAttribute("user") != null) {
+	   	if (session.getAttribute("userRole").equals("admin")) {
 		%>
 		<th>Actions</th>
 		<%
 		}
+	    }
 		%>
 	</tr>
 	<c:forEach items="${meals}" var="Meal">
@@ -26,11 +28,13 @@
 			<td><img alt="" src="${Meal.mealImg}" width=80px height=80px></td>
 
 			<%
+			if (session.getAttribute("user") != null) {
 			if (session.getAttribute("userRole").equals("admin")) {
 			%>
 			<td><a href="${appName}meal/edit?id=${Meal.mealId}">Edit</a> | <a
 				href="${appName}meal/delete?id=${Meal.mealId}">Delete</a></td>
 			<%
+			}
 			}
 			%>
 
