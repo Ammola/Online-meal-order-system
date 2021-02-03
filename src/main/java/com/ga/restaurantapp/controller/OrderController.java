@@ -108,7 +108,29 @@ public class OrderController {
 					
 				}
 				
+				// HTTP GET REQUEST - profile Edit
+				@GetMapping("/order/index")
+				public ModelAndView orderIndex(@RequestParam int id) {
 				
+				User user = userDao.findById(id);
+					
+				ModelAndView mv = new ModelAndView();
+				mv.setViewName("order/index");
+				mv.addObject("user", user);
+					
+				HomeController hc = new HomeController();
+				hc.setAppName(mv, env);
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("orderSize", user.getOrders().size());
+					
+				if(!uc.isUserLoggedIn())
+					{
+						mv.setViewName("home/index");
+					}
+					
+					return mv;
+				}
 			
 	
 	
