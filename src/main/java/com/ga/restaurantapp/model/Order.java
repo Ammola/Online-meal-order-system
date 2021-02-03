@@ -1,72 +1,60 @@
 package com.ga.restaurantapp.model;
-
 import java.sql.Date;
-
 import java.util.Set;
-
 import javax.persistence.*;
-
 @Entity
-@Table(name="Order")
+@Table(name="Orders")
 public class Order {
-
 	@Id
 	@GeneratedValue
-	private int Orderid;
-
-	private Date OrderDate;
+	private int orderId;
+	private Date orderDate;
 	
-	private int Quantity;
+	private int quantity;
 	
-	private int CustomerID;
+	private int customerID;
 	
 	
-
+	@ManyToOne
+	@JoinColumn(name="FK_CustomerId")
+	private User customerId;
+	
+	
 	@ManyToMany
 	@JoinTable(name = "meal_order",
 				joinColumns = { @JoinColumn(name = "order_id") },
 				inverseJoinColumns = { @JoinColumn(name = "meal_id")})
 	private Set<Meal> meals;
-	public int getOrderid() {
-		return Orderid;
+	public int getOrderId() {
+		return orderId;
 	}
-
-	public void setOrderid(int orderid) {
-		Orderid = orderid;
+	public void setOrderId(int orderid) {
+		orderId = orderid;
 	}
-
 	public Date getOrderDate() {
-		return OrderDate;
+		return orderDate;
 	}
-
 	public void setOrderDate(Date orderDate) {
-		OrderDate = orderDate;
+		this.orderDate = orderDate;
 	}
-
 	public int getQuantity() {
-		return Quantity;
+		return quantity;
 	}
-
 	public void setQuantity(int quantity) {
-		Quantity = quantity;
+		this.quantity = quantity;
 	}
-
 	public int getCustomerID() {
-		return CustomerID;
+		return customerID;
 	}
-
 	public void setCustomerID(int customerID) {
-		CustomerID = customerID;
+		this.customerID = customerID;
 	}
-
 	public Set<Meal> getMeal() {
 		return meals;
 	}
-
 	public void setMeal(Set<Meal> meal) {
 		this.meals = meal;
 	}
-
 	
 	
 	
