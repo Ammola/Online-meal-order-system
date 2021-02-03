@@ -1,16 +1,19 @@
 <jsp:include page="../shared/_layout.jsp" />
 
+<table class="table table-striped">
+	<tr>
+		<th>Order Id</th>
+		<th>Customer's Name</th>
+		<th>Total</th>
+		<th>Order Date</th>
+	</tr>
 
-Customer's Name : ${order.customerName} <br><br>
+	<tr>
+		<td>${order.orderId}</td>
+		<td>${order.customerName}</td>
+		<td>${order.total}</td>
+		<td>${order.createAt}</td>
+	</tr>
 
-customerId : ${order.customerId} <br><br>
+</table>
 
-CustomerPhone : ${order.customerPhone} <br><br>
-
-Order ID : ${order.orderid} <br><br>
-
-Quantity : ${order.quantity} <br><br>
-
-Price : ${order.price} <br><br>
-
-OrderDate : ${order.orderDate} <br><br>
