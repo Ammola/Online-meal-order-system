@@ -44,16 +44,14 @@ public class CartController {
 	@GetMapping("/cart/add")
 	public String addCart(@RequestParam int id) {
 		
-		HttpSession session = request.getSession();
-		
-		Set<Meal> cartMeals = new HashSet<Meal>();
-		
 		// If the user is not logged in
-		if(!uc.isUserLoggedIn()) {
-				return "redirect:/";
-		// If the user role is "user" do not give permission for delete		
-		} 
-		
+				if(!uc.isUserLoggedIn()) {
+						return "redirect:/";
+				// If the user role is "user" do not give permission for delete		
+				} 
+				
+		HttpSession session = request.getSession();
+		Set<Meal> cartMeals = new HashSet<Meal>();
 		Meal meal = mealDao.findById(id);
 		User user = (User) session.getAttribute("user");
 		Cart cart = user.getCart();

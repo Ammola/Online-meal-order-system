@@ -79,5 +79,6 @@
 	</div>
 	<input name="id" type="hidden" value="${user.id}">
 	<input name="userRole" type="hidden" value="${user.userRole}">
+	<input name="userRole" type="hidden" value="${user.cart.id}">
 	<input name="password" type="hidden" value="${user.password}">
 </form>

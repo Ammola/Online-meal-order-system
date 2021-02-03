@@ -17,15 +17,16 @@
 						</div>
 
 						<div class="form-group">
-							<input name="confirmPassword" type="password" class="form-control"
-								placeholder="Confirm Password *" value="" id="confirmPassword"
-								onkeyup="matchPassword();" required /> <span id='message'></span>
+							<input name="confirmPassword" type="password"
+								class="form-control" placeholder="Confirm Password *" value=""
+								id="confirmPassword" onkeyup="matchPassword();" required /> <span
+								id='message'></span>
 						</div>
 
 					</div>
 				</div>
-				<button type="submit" onclick="matchPassword()" class="btn btn-warning" id="submit">Save
-					Password</button>
+				<button type="submit" onclick="matchPassword()"
+					class="btn btn-warning" id="submit">Save Password</button>
 			</div>
 		</div>
 	</div>
@@ -42,6 +43,7 @@
 		name="postalCode" type="hidden" value="${user.postalCode}"> <input
 		name="additionalNumber" type="hidden" value="${user.additionalNumber}">
 	<input name="userRole" type="hidden" value="${user.userRole}">
+	<input name="userRole" type="hidden" value="${user.cart.id}">
 </form>
 
 <script>

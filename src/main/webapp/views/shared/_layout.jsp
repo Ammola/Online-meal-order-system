@@ -30,11 +30,11 @@ if (session.getAttribute("user") != null) {
 	%>
 
 	<a href="${appName}">Home</a> |
-	<a href="${appName}meal/index">Menu</a> |
+	<a href="${appName}meal/index">Menu</a> 
 	<%
 	if (session.getAttribute("userRole").equals("admin")) {
 	%>
-	<a href="${appName}meal/add">Add Meal</a>
+	| <a href="${appName}meal/add">Add Meal</a>
 	<%
 	}
 	%>
