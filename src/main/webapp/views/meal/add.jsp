@@ -19,7 +19,7 @@
 	</div>
 
 	<div class="form-group">
-		<label>Photo </label> <input type="text" name="Photo"  class="form-control">
+		<label>Image </label> <input type="text" name="mealImg"  class="form-control">
 	</div>
 
 

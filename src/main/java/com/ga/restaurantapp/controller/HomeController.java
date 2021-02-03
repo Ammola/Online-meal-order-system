@@ -6,6 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+//CRUD OPERATIONS
+//C -> CREAT
+//R -> SELECT
+//U -> UPDATE
+//D -> DELETE
+
+
 @Controller
 public class HomeController {
 
@@ -27,7 +34,7 @@ public class HomeController {
 	public ModelAndView setAppName(ModelAndView mv, @Autowired Environment env) {
 		String appName = env.getProperty("app.name");
 		mv.addObject("appName", appName);
-		mv.addObject("Welcome", "Welcome to our Restaurant");
+		mv.addObject("Welcome", "Your delecious meal is one click away!!");
 
 		return mv;
 	}
