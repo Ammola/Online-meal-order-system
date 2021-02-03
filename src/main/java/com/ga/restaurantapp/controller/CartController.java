@@ -72,13 +72,10 @@ public class CartController {
 			// HTTP GET REQUEST - Author Detail
 			@GetMapping("/cart/get-index")
 			public String cartIndex() {
-				
 				HttpSession session = request.getSession();
-				
-				Cart cart = (Cart) session.getAttribute("userCart");
-				
-				int cartId = cart.getId();
-				
+				int userId = (int) session.getAttribute("userId");
+				User user = dao.findById(userId);
+				int cartId = user.getCart().getId();
 				if(!uc.isUserLoggedIn())
 				{
 					return "redirect:/";

@@ -43,7 +43,7 @@
 		name="postalCode" type="hidden" value="${user.postalCode}"> <input
 		name="additionalNumber" type="hidden" value="${user.additionalNumber}">
 	<input name="userRole" type="hidden" value="${user.userRole}">
-	<input name="userRole" type="hidden" value="${user.cart.id}">
+	<input name="cart.id" type="hidden" value="${user.cart.id}">
 </form>
 
 <script>
