@@ -39,24 +39,18 @@ public class UserController {
 	// To load the registration form
 	   @GetMapping("/user/registration")
 	   public ModelAndView registration() {
-		   
 		   ModelAndView mv = new ModelAndView();
 		   mv.setViewName("user/registration");
-		   
 		   HomeController hc = new HomeController();
 		   hc.setAppName(mv, env);
-		   
 		   return mv;
 	   }
 	
 	// To post the registration form
 	 @PostMapping("/user/registration")
 	 public ModelAndView registration(User user) {
-
-		 
 		 ModelAndView mv = new ModelAndView();
 		 mv.setViewName("user/login");
-		 
 		 HomeController hc = new HomeController();
 		 hc.setAppName(mv, env);
 		 
@@ -80,7 +74,6 @@ public class UserController {
 		 Cart cart = new Cart();
 		 cartDao.save(cart);
 		 user.setCart(cart);
-		 
 		 dao.save(user);
 		 mv.addObject("message", "User registered successfully");
 		 
@@ -103,26 +96,20 @@ public class UserController {
 	// To post the login form
 		 @PostMapping("/user/login")
 		public String login(User user) {
-			 
 			 BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
-			 
 			 String emailAddress = user.getEmailAddress();
 			 String password = user.getPassword();
-			 
 			 User matchedUser = dao.findByEmailAddress(emailAddress);
 			 HttpSession session = request.getSession();
 
 			 if(matchedUser != null) {
 				 if(bCrypt.matches(password, matchedUser.getPassword())) {
 					 
-					 System.out.println("matched user"+bCrypt.matches(password, matchedUser.getPassword()));
-					 
 					 // Session
 					  session.setAttribute("user", matchedUser);
 					  session.setAttribute("userRole", matchedUser.getUserRole());
 					  session.setAttribute("userId", matchedUser.getId());
-					  session.setAttribute("userCart", matchedUser.getCart());
-					  
+					  session.setAttribute("userCart", matchedUser.getCart());  
 					  session.setAttribute("message", "you are logged in successfully");
 					  
 					  return "redirect:/";
@@ -148,23 +135,22 @@ public class UserController {
 		
 		  public boolean isUserLoggedIn() {
 		 
-		  HttpSession session = request.getSession(); if(session.getAttribute("user")
-		  == null) { return false; } else { return true; } }
+		  HttpSession session = request.getSession(); 
+		  if(session.getAttribute("user")== null) 
+		  { return false; } 
+		  else 
+		  { return true; } 
+		  }
 		 
 		
 		  // Load user profile	  
 		  @GetMapping("/user/profile") public ModelAndView profile() {
-		  
 		  HttpSession session = request.getSession(); 
 		  int userId = (int) session.getAttribute("userId");
-		 
 		  User user = dao.findById(userId);
-		 
 		  ModelAndView mv = new ModelAndView(); mv.setViewName("user/profile");
-		  mv.addObject("user", user);
-		 
+		  mv.addObject("user", user);		 
 		  HomeController hc = new HomeController(); hc.setAppName(mv, env);
-		  	
 		  if(!uc.isUserLoggedIn())
 				{
 					mv.setViewName("home/index");
@@ -177,11 +163,9 @@ public class UserController {
 			@GetMapping("/user/edit")
 			public ModelAndView editProfile(@RequestParam int id) {
 			User user = dao.findById(id);
-				
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("user/edit");
 			mv.addObject("user", user);
-				
 			HomeController hc = new HomeController();
 			hc.setAppName(mv, env);
 				
@@ -205,7 +189,6 @@ public class UserController {
 					return "redirect:/home/index";
 				}
 				 
-				//User user = dao.findById(userId);
 				return "redirect:/user/edit?id="+userId; 			
 				
 				}
@@ -214,23 +197,13 @@ public class UserController {
 			// To post the registration form
 			 @PostMapping("/user/edit-profile")
 			 public ModelAndView editProfile(User user) {
-
-				 
 				 ModelAndView mv = new ModelAndView();
 				 mv.setViewName("user/profile");
-				 
 				 HomeController hc = new HomeController();
 				 hc.setAppName(mv, env);
-				
-				 // Password Encryption
-				 //BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
-				 
 				 String newPassword = user.getPassword();
 				 String role = user.getUserRole();
-				 
 				 user.setPassword(newPassword);
-				 //System.out.println("role"+role);
-				 //user.setPassword(bCrypt.encode(newPassword));
 				 user.setUserRole(role);
 				 
 				 dao.save(user);

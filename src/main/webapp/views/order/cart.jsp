@@ -28,9 +28,6 @@
 	</div>
 	
 	<button type="submit">checkout</button>
-<<<<<<< HEAD
+
 	</form>
 
-=======
-	</form>
->>>>>>> Ibrahim-dev

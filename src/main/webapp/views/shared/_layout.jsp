@@ -14,16 +14,9 @@ crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/myStyles.css">
 <link rel="stylesheet" href="css/myStyles.css">
-<%-- <c:url value="../js/myMain.js" var="myUrl" />
-<script type="text/javascript" src="${myUrl}"/><!-- comment --></script>
- --%>
-<!-- <script src="../js/main.js" ></script>
-<script src="js/main.js" ></script>
- -->
 </head>
 <body>
-	<!-- <p id="demo"></p>
- -->
+<!-- <p id="demo"></p>-->
  <%
 if (session.getAttribute("user") != null) {
 %>
@@ -32,27 +25,23 @@ if (session.getAttribute("user") != null) {
 </div>
 <% } %>
 <h5>${Welcome}</h5>
-	<!-- <script>
-document.getElementById("demo").innerHTML = 5 + 6;
-</script>
- -->
+<!-- <script> document.getElementById("demo").innerHTML = 5 + 6; </script>-->
 	<%
 	if (session.getAttribute("user") != null) {
 	%>
      <div>
 	<a href="${appName}">Home</a> |
-	<a href="${appName}meal/index">Meals</a> |
+	<a href="${appName}meal/index">Menu</a> |
 	<%
 	if (session.getAttribute("userRole").equals("admin")) {
 	%>
-	<a href="${appName}meal/add">Add Meal</a> |
+	<a href="${appName}meal/add">Add Meal</a>
 	<%
 	}
 	%>
-	<a href="${appName}order/get-index">My Orders</a>
-
-
+	
 	<div style="text-align: right; float: right;">
+	    <a href="${appName}order/get-index">Orders</a> |
 		<a href="${appName}cart/get-index">Cart</a> | 
 		<a href="${appName}user/profile">Profile</a> | 
 		<a href="${appName}user/logout">Logout</a>

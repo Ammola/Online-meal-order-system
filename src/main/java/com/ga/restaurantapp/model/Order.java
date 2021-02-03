@@ -1,8 +1,8 @@
 package com.ga.restaurantapp.model;
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.*;
-
 import org.hibernate.annotations.CreationTimestamp;
 
 
@@ -101,5 +101,4 @@ public class Order {
 	public void setOrderedMeals(Set<Meal> orderedMeals) {
 		OrderedMeals = orderedMeals;
 	}
-
 }
