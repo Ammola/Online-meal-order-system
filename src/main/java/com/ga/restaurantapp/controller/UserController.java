@@ -125,9 +125,6 @@ public class UserController {
 					  
 					  session.setAttribute("message", "you are logged in successfully");
 					  
-					  System.out.println("is password matched?");
-					  System.out.println(bCrypt.matches(password, matchedUser.getPassword()));
-					  
 					  return "redirect:/";
 					 
 				 }
@@ -167,9 +164,8 @@ public class UserController {
 		  mv.addObject("user", user);
 		 
 		  HomeController hc = new HomeController(); hc.setAppName(mv, env);
-		  
-			
-		if(!uc.isUserLoggedIn())
+		  	
+		  if(!uc.isUserLoggedIn())
 				{
 					mv.setViewName("home/index");
 				}
